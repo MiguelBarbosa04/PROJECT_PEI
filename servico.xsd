@@ -1,125 +1,267 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"> 
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
-<xs:element name="serviço">
-    <xs:complexType>
-        <xs:sequence>
-            <xs:element name="peritagemRef">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element type="xs:byte" name="IDparceiro"/>
-                        <xs:element type="xs:byte" name="IDperito"/>
-                        <xs:element name="estado">
-                            <xs:complexType>
-                                <xs:sequence>
-                                    <xs:element type="xs:string" name="ocorrencia"/>
-                                    <xs:element type="xs:string" name="explicacao"/>
-                                </xs:sequence>
-                                <xs:attribute type="xs:string" name="type"/>
-                            </xs:complexType>
-                        </xs:element>
-                        <xs:element type="xs:string" name="horaInicio"/>
-                        <xs:element type="xs:string" name="horaFim"/>
-                    </xs:sequence>
-                    <xs:attribute type="xs:byte" name="id"/>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="Entidade">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element type="xs:string" name="Nome"/>
-                        <xs:element type="xs:string" name="Tipo"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="Parametros">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="bateria">
-                            <xs:complexType>
-                                <xs:simpleContent>
-                                    <xs:extension base="xs:string">
-                                        <xs:attribute type="xs:string" name="value"/>
-                                    </xs:extension>
-                                </xs:simpleContent>
-                            </xs:complexType>
-                        </xs:element>
-                        <xs:element type="xs:string" name="estadoBateria"/>
-                        <xs:element name="nivelOleo">
-                            <xs:complexType>
-                                <xs:simpleContent>
-                                    <xs:extension base="xs:string">
-                                        <xs:attribute type="xs:string" name="value"/>
-                                    </xs:extension>
-                                </xs:simpleContent>
-                            </xs:complexType>
-                        </xs:element>
-                        <xs:element type="xs:string" name="estadoNivelOleo"/>
-                        <xs:element name="transmissao">
-                            <xs:complexType>
-                                <xs:simpleContent>
-                                    <xs:extension base="xs:string">
-                                        <xs:attribute type="xs:string" name="value"/>
-                                    </xs:extension>
-                                </xs:simpleContent>
-                            </xs:complexType>
-                        </xs:element>
-                        <xs:element type="xs:string" name="estadoTransmissao"/>
-                        <xs:element name="sistemaRefrigeracao">
-                            <xs:complexType>
-                                <xs:simpleContent>
-                                    <xs:extension base="xs:string">
-                                        <xs:attribute type="xs:string" name="value"/>
-                                    </xs:extension>
-                                </xs:simpleContent>
-                            </xs:complexType>
-                        </xs:element>
-                        <xs:element type="xs:string" name="estadoSistemaRefrigeracao"/>
-                        <xs:element name="suporteMotor">
-                            <xs:complexType>
-                                <xs:simpleContent>
-                                    <xs:extension base="xs:string">
-                                        <xs:attribute type="xs:string" name="value"/>
-                                    </xs:extension>
-                                </xs:simpleContent>
-                            </xs:complexType>
-                        </xs:element>
-                        <xs:element type="xs:string" name="estadoSuporteMotor"/>
-                        <xs:element name="somMotor">
-                            <xs:complexType>
-                                <xs:simpleContent>
-                                    <xs:extension base="xs:string">
-                                        <xs:attribute type="xs:string" name="value"/>
-                                    </xs:extension>
-                                </xs:simpleContent>
-                            </xs:complexType>
-                        </xs:element>
-                        <xs:element type="xs:string" name="estadoSomMotor"/>
-                        <xs:element name="gases">
-                            <xs:complexType>
-                                <xs:simpleContent>
-                                    <xs:extension base="xs:string">
-                                        <xs:attribute type="xs:string" name="value"/>
-                                    </xs:extension>
-                                </xs:simpleContent>
-                            </xs:complexType>
-                        </xs:element>
-                        <xs:element type="xs:string" name="estadoGases"/>
-                        <xs:element name="caixaVelocidades">
-                            <xs:complexType>
-                                <xs:simpleContent>
-                                    <xs:extension base="xs:string">
-                                        <xs:attribute type="xs:string" name="value"/>
-                                    </xs:extension>
-                                </xs:simpleContent>
-                            </xs:complexType>
-                        </xs:element>
-                        <xs:element type="xs:string" name="estadoCaixaVelocidades"/>
-                        <xs:element type="xs:short" name="NumKM"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-        </xs:sequence>
-    </xs:complexType>
-</xs:element>
+    <!-- Criação de um tipo de dados para o estado do serviço -->
+    <xs:simpleType name="status">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Realizado" />
+            <xs:enumeration value="Não Realizado" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Criação de um tipo de dados para o estado da bateria -->
+    <xs:simpleType name="bateria">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Weak" />
+            <xs:enumeration value="Not Working" />
+            <xs:enumeration value="Jump Start" />
+            <xs:enumeration value="Discharging Light Glowing" />
+            <xs:enumeration value="Intermittent Functioning" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Criação de um tipo de dados para o estado do oleo -->
+    <xs:simpleType name="oleo">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Dirty" />
+            <xs:enumeration value="Leakage from Side Cover" />
+            <xs:enumeration value="Leakage from
+            Sump/chamber" />
+            <xs:enumeration value="Leakage from Tappet Cover" />
+            <xs:enumeration value="Leakage from Turbo Charger" />
+            <xs:enumeration value="Leaking”" />
+            <xs:enumeration value="Level Low" />
+            <xs:enumeration value="Low Pressure warning light glowing" />
+            <xs:enumeration value="Mixed with
+            Coolant" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Criação de um tipo de dados para o estado da transmissao -->
+    <xs:simpleType name="transmissao">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Car not working on Petro" />
+            <xs:enumeration value="Fuel Leakage From Injector" />
+            <xs:enumeration value="MIL light glowing" />
+            <xs:enumeration value="Misfiring" />
+            <xs:enumeration value="Not converting to CNG" />
+            <xs:enumeration value="Over heating" />
+            <xs:enumeration value="RPM
+            fluctuating" />
+            <xs:enumeration value="RPM not increasing" />
+            <xs:enumeration value="Repaired" />
+            <xs:enumeration value="Seized" />
+            <xs:enumeration value="Sump Damaged" />
+            <xs:enumeration value="Turbo
+            charger not working" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Criação de um tipo de dados para o estado do sistema de refrigeracao -->
+    <xs:simpleType name="refrigeracao">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Dirty" />
+            <xs:enumeration value="Leaking" />
+            <xs:enumeration value="Mixed with Engine Oil" />
+            <xs:enumeration value="Radiator
+            Damaged" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Criação de um tipo de dados para o estado do suporte do motor -->
+    <xs:simpleType name="suporteMotor">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Broken" />
+            <xs:enumeration value="Excess Vibration" />
+            <xs:enumeration value="Loose" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Criação de um tipo de dados para o estado do som do motor -->
+    <xs:simpleType name="somMotor">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Alternator Brg Noise" />
+            <xs:enumeration value="Engine Auxiliary Noise" />
+            <xs:enumeration value="Injector Noise" />
+            <xs:enumeration value="Tappet Noise" />
+            <xs:enumeration value="Timing Noise" />
+            <xs:enumeration value="Water Pump Brg
+            Noise" />
+            <xs:enumeration value="Whistling Noise-Turbo" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Criação de um tipo de dados para o estado dos gases -->
+    <xs:simpleType name="gases">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Black" />
+            <xs:enumeration value="Blue" />
+            <xs:enumeration value="Leakage from manifold" />
+            <xs:enumeration value="Noise from silencer
+            assembly" />
+            <xs:enumeration value="Silencer assembly damaged" />
+            <xs:enumeration value="White" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Criação de um tipo de dados para o estado da caixa de velocidades -->
+    <xs:simpleType name="caixaVelocidades">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Auto Transmission Not Satisfactory" />
+            <xs:enumeration value="Bearing Noise" />
+            <xs:enumeration value="Burning" />
+            <xs:enumeration value="Hard" />
+            <xs:enumeration value="Low Pick Up" />
+            <xs:enumeration value="Slip" />
+            <xs:enumeration value="Spongy" />
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:element name="serviço">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="peritagemRef">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="IDparceiro">
+                                <!-- Como a referência a ser inserida é um alfanumério é necessário limitar os valores os caracteres que entram no sistema-->
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <!-- [a-zA-Z0-9]+ = significa que podem ser inseridos valores que estejam entre 0 e 9, de a até z e A até Z -->
+                                        <xs:pattern value="[a-zA-Z0-9]+"></xs:pattern>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="IDperito">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <!-- [a-zA-Z0-9]+ = significa que podem ser inseridos valores que estejam entre 0 e 9, de a até z e A até Z -->
+                                        <xs:pattern value="[a-zA-Z0-9]+"></xs:pattern>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="estado">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="ocorrencia" />
+                                        <xs:element name="explicacao">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:maxLength value="400"></xs:maxLength>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute type="status" name="type"></xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                            <!-- Transformar o tipo do elemento para xs:time (valor predefinido para as horas) (HH-MM-SS) -->
+                            <xs:element type="xs:time" name="horaInicio" />
+                            <xs:element type="xs:time" name="horaFim" />
+                        </xs:sequence>
+                        <!-- Valor do Código é um valor inteiro Positivo -->
+                        <xs:attribute type="xs:positiveInteger" name="id" />
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Entidade">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="Nome" />
+                            <xs:element name="Tipo">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="Cliente" />
+                                        <xs:enumeration value="Oficina" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Parametros">
+                    <xs:complexType>
+                        <xs:sequence>
+
+                            <xs:element name="bateria">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="1" />
+                                    </xs:sequence>
+                                    <xs:attribute type="xs:string" name="value"  />
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="nivelOleo">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                    <xs:attribute type="xs:string" name="value" />
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="transmissao">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="estado" />
+                                    </xs:sequence>
+                                    <xs:attribute type="xs:string" name="value" />
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="sistemaRefrigeracao">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="estado" />
+                                    </xs:sequence>
+                                    <xs:attribute type="xs:string" name="value" />
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="suporteMotor">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="estadoSuporteMotor" />
+                                    </xs:sequence>
+                                    <xs:attribute type="xs:string" name="value" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="somMotor">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute type="xs:string" name="value" />
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element type="xs:string" name="estadoSomMotor" />
+                            <xs:element name="gases">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute type="xs:string" name="value" />
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element type="xs:string" name="estadoGases" />
+                            <xs:element name="caixaVelocidades">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute type="xs:string" name="value" />
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element type="xs:string" name="estadoCaixaVelocidades" />
+                            <xs:element type="xs:short" name="NumKM" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>
