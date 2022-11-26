@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<marcacoes>
+    
+    <codMarcacao>4</codMarcacao>  <!-- Número inteiro positivo-->
+    <local>
+        <morada>
+            <cidade>Lixa</cidade>
+            <codPostal>4615-594</codPostal>
+            <rua>Rua Doutor António Manuel Cerqueira Magro </rua>
+            <porta>200</porta>
+            <coordenadas> <!-- Opcional-->
+                <latitude>41.324084</latitude>
+                <longitude>-8.145412</longitude> 
+            </coordenadas>
+        </morada>
+        
+        <contactoCliente> <!-- Pode ser cliente ou oficina-->
+            <nomePessoa>Miguel</nomePessoa>
+            <proprietario>Barbosa</proprietario>
+         </contactoCliente>
+        
+        <contactoOficina>
+           <nomeEstabelicimento>Estabelecimento Barbosa</nomeEstabelicimento>
+        </contactoOficina>
+        
+        <veiculo>
+            <marca>BMW</marca>
+            <modelo>i4</modelo>
+            <combustivel>Eletric</combustivel> <!-- Tem opções "Diesel", "Gasoline", "Eletric/Gasoline" ou "Eletric"-->
+            <transmissao>Auto</transmissao> <!-- "Auto" ou "Manual"-->
+            <ano></ano>
+            <potenciaCavalos>2020</potenciaCavalos>
+        </veiculo>
+        
+    </local>
+    
+</marcacoes>

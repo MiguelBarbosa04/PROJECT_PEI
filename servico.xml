@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serviço xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="servico.xsd" >
+    
+    <peritagemRef id = "123"> <!-- Valor inteiro positivo -->
+        <IDparceiro>10</IDparceiro>   <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->     
+        <IDperito>98</IDperito>       <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos --> 
+        <estado type ="não realizado">  <!-- Opção de "realizado" e "não realizado" --> 
+            <ocorrencia>Other</ocorrencia> <!-- Opcção inaccessible Location, missing vehicle, other  SE FOR other TEM DE TER EXPLICAÇÃO ATÉ 400 caracteres-->
+            <explicacao>Teste</explicacao>
+        </estado>
+        
+        <horaInicio>13:24</horaInicio>
+        <horaFim>15:00</horaFim>
+    </peritagemRef>
+    
+    <Entidade>
+        <Nome>Miguel Barbosa</Nome>
+        <Tipo>Cliente</Tipo> <!-- opção de "Cliente" ou "Oficina" -->
+    </Entidade>
+    
+    <Parametros> <!-- Nos parâmetros a opção é "Yes" ou "No" -->
+       <bateria value = "No"></bateria>  <!-- Só um atributo -->
+            <estadoBateria>Weak</estadoBateria> 
+        <nivelOleo value= "No"></nivelOleo> <!-- Um ou mais atributos -->
+            <estadoNivelOleo>Dirty</estadoNivelOleo>
+        <transmissao value = "No"></transmissao> <!-- Um ou mais atributos -->
+            <estadoTransmissao>Misfiring</estadoTransmissao>
+        <sistemaRefrigeracao value ="No"></sistemaRefrigeracao> <!-- Um ou mais atributos -->
+            <estadoSistemaRefrigeracao>Radiator Damaged</estadoSistemaRefrigeracao>
+        <suporteMotor value = "No">Broken</suporteMotor> <!-- Só um  atributo -->
+            <estadoSuporteMotor>Broken</estadoSuporteMotor>
+        <somMotor value = "No"></somMotor> <!-- Um ou mais atributos -->
+            <estadoSomMotor>Noise</estadoSomMotor>
+        <gases value = "No"></gases> <!-- Só um atributo -->
+            <estadoGases>Black</estadoGases>
+        <caixaVelocidades value = "No"></caixaVelocidades> <!-- Um ou mais atributos -->
+            <estadoCaixaVelocidades>Burning</estadoCaixaVelocidades>
+          <NumKM>1000</NumKM>
+    </Parametros>
+    
+</serviço>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"> 
+
+<xs:element name="serviço">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="peritagemRef">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element type="xs:byte" name="IDparceiro"/>
+                        <xs:element type="xs:byte" name="IDperito"/>
+                        <xs:element name="estado">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element type="xs:string" name="ocorrencia"/>
+                                    <xs:element type="xs:string" name="explicacao"/>
+                                </xs:sequence>
+                                <xs:attribute type="xs:string" name="type"/>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element type="xs:string" name="horaInicio"/>
+                        <xs:element type="xs:string" name="horaFim"/>
+                    </xs:sequence>
+                    <xs:attribute type="xs:byte" name="id"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Entidade">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element type="xs:string" name="Nome"/>
+                        <xs:element type="xs:string" name="Tipo"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Parametros">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="bateria">
+                            <xs:complexType>
+                                <xs:simpleContent>
+                                    <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="value"/>
+                                    </xs:extension>
+                                </xs:simpleContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element type="xs:string" name="estadoBateria"/>
+                        <xs:element name="nivelOleo">
+                            <xs:complexType>
+                                <xs:simpleContent>
+                                    <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="value"/>
+                                    </xs:extension>
+                                </xs:simpleContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element type="xs:string" name="estadoNivelOleo"/>
+                        <xs:element name="transmissao">
+                            <xs:complexType>
+                                <xs:simpleContent>
+                                    <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="value"/>
+                                    </xs:extension>
+                                </xs:simpleContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element type="xs:string" name="estadoTransmissao"/>
+                        <xs:element name="sistemaRefrigeracao">
+                            <xs:complexType>
+                                <xs:simpleContent>
+                                    <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="value"/>
+                                    </xs:extension>
+                                </xs:simpleContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element type="xs:string" name="estadoSistemaRefrigeracao"/>
+                        <xs:element name="suporteMotor">
+                            <xs:complexType>
+                                <xs:simpleContent>
+                                    <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="value"/>
+                                    </xs:extension>
+                                </xs:simpleContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element type="xs:string" name="estadoSuporteMotor"/>
+                        <xs:element name="somMotor">
+                            <xs:complexType>
+                                <xs:simpleContent>
+                                    <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="value"/>
+                                    </xs:extension>
+                                </xs:simpleContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element type="xs:string" name="estadoSomMotor"/>
+                        <xs:element name="gases">
+                            <xs:complexType>
+                                <xs:simpleContent>
+                                    <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="value"/>
+                                    </xs:extension>
+                                </xs:simpleContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element type="xs:string" name="estadoGases"/>
+                        <xs:element name="caixaVelocidades">
+                            <xs:complexType>
+                                <xs:simpleContent>
+                                    <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="value"/>
+                                    </xs:extension>
+                                </xs:simpleContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element type="xs:string" name="estadoCaixaVelocidades"/>
+                        <xs:element type="xs:short" name="NumKM"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+</xs:schema>
