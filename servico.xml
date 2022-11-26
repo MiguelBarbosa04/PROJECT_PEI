@@ -40,15 +40,15 @@
         </sistemaRefrigeracao> <!-- Um ou mais atributos -->
 
         <suporteMotor value="No">
-            <estadoSuporteMotor>Broken</estadoSuporteMotor>
+            <estado>Broken</estado>
         </suporteMotor> <!-- Só um  atributo -->
 
         <somMotor value="No">
-            <estadoSomMotor>Noise</estadoSomMotor>
+            <estado>Noise</estado>
         </somMotor> <!-- Um ou mais atributos -->
 
         <gases value="No">
-            <estadoGases>Black</estadoGases>
+            <estado>Black</estado>
         </gases> <!-- Só um atributo -->
 
         <caixaVelocidades value="No">
