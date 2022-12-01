@@ -2,10 +2,18 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
     <!-- Criação de um tipo de dados para o estado do serviço -->
-    <xs:simpleType name="status">
+    <xs:simpleType name="estado_peritagem">
         <xs:restriction base="xs:string">
             <xs:enumeration value="Realizado" />
             <xs:enumeration value="Não Realizado" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Criação de um tipo de dados para a opção de conformidade dos componentes do veículo-->
+    <xs:simpleType name="opcao">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Yes" />
+            <xs:enumeration value="No" />
         </xs:restriction>
     </xs:simpleType>
 
@@ -25,15 +33,13 @@
         <xs:restriction base="xs:string">
             <xs:enumeration value="Dirty" />
             <xs:enumeration value="Leakage from Side Cover" />
-            <xs:enumeration value="Leakage from
-            Sump/chamber" />
+            <xs:enumeration value="Leakage from Sump/chamber" />
             <xs:enumeration value="Leakage from Tappet Cover" />
             <xs:enumeration value="Leakage from Turbo Charger" />
             <xs:enumeration value="Leaking”" />
             <xs:enumeration value="Level Low" />
             <xs:enumeration value="Low Pressure warning light glowing" />
-            <xs:enumeration value="Mixed with
-            Coolant" />
+            <xs:enumeration value="Mixed with Coolant" />
         </xs:restriction>
     </xs:simpleType>
 
@@ -46,14 +52,12 @@
             <xs:enumeration value="Misfiring" />
             <xs:enumeration value="Not converting to CNG" />
             <xs:enumeration value="Over heating" />
-            <xs:enumeration value="RPM
-            fluctuating" />
+            <xs:enumeration value="RPM fluctuating" />
             <xs:enumeration value="RPM not increasing" />
             <xs:enumeration value="Repaired" />
             <xs:enumeration value="Seized" />
             <xs:enumeration value="Sump Damaged" />
-            <xs:enumeration value="Turbo
-            charger not working" />
+            <xs:enumeration value="Turbo charger not working" />
         </xs:restriction>
     </xs:simpleType>
 
@@ -63,8 +67,7 @@
             <xs:enumeration value="Dirty" />
             <xs:enumeration value="Leaking" />
             <xs:enumeration value="Mixed with Engine Oil" />
-            <xs:enumeration value="Radiator
-            Damaged" />
+            <xs:enumeration value="Radiator Damaged" />
         </xs:restriction>
     </xs:simpleType>
 
@@ -153,7 +156,7 @@
                                             </xs:simpleType>
                                         </xs:element>
                                     </xs:sequence>
-                                    <xs:attribute type="status" name="type"></xs:attribute>
+                                    <xs:attribute type="estado_peritagem" name="type"></xs:attribute>
                                 </xs:complexType>
                             </xs:element>
                             <!-- Transformar o tipo do elemento para xs:time (valor predefinido para as horas) (HH-MM-SS) -->
@@ -188,7 +191,7 @@
                                     <xs:sequence>
                                         <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="1" />
                                     </xs:sequence>
-                                    <xs:attribute type="xs:string" name="value"  />
+                                    <xs:attribute type="opcao" name="value"  />
                                 </xs:complexType>
                             </xs:element>
 
@@ -197,67 +200,61 @@
                                     <xs:sequence>
                                         <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="unbounded" />
                                     </xs:sequence>
-                                    <xs:attribute type="xs:string" name="value" />
+                                    <xs:attribute type="opcao" name="value" />
                                 </xs:complexType>
                             </xs:element>
 
                             <xs:element name="transmissao">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element type="xs:string" name="estado" />
+                                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="unbounded"/>
                                     </xs:sequence>
-                                    <xs:attribute type="xs:string" name="value" />
+                                    <xs:attribute type="opcao" name="value" />
                                 </xs:complexType>
                             </xs:element>
 
                             <xs:element name="sistemaRefrigeracao">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element type="xs:string" name="estado" />
+                                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="unbounded"/>
                                     </xs:sequence>
-                                    <xs:attribute type="xs:string" name="value" />
+                                    <xs:attribute type="opcao" name="value" />
                                 </xs:complexType>
                             </xs:element>
 
                             <xs:element name="suporteMotor">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element type="xs:string" name="estadoSuporteMotor" />
+                                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="1"/>
                                     </xs:sequence>
-                                    <xs:attribute type="xs:string" name="value" />
+                                    <xs:attribute type="opcao" name="value" />
                                 </xs:complexType>
                             </xs:element>
                             <xs:element name="somMotor">
                                 <xs:complexType>
-                                    <xs:simpleContent>
-                                        <xs:extension base="xs:string">
-                                            <xs:attribute type="xs:string" name="value" />
-                                        </xs:extension>
-                                    </xs:simpleContent>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="estado"  minOccurs="1" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                    <xs:attribute type="opcao" name="value"/>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element type="xs:string" name="estadoSomMotor" />
                             <xs:element name="gases">
                                 <xs:complexType>
-                                    <xs:simpleContent>
-                                        <xs:extension base="xs:string">
-                                            <xs:attribute type="xs:string" name="value" />
-                                        </xs:extension>
-                                    </xs:simpleContent>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="1"/>
+                                    </xs:sequence>
+                                    <xs:attribute type="opcao" name="value" />
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element type="xs:string" name="estadoGases" />
                             <xs:element name="caixaVelocidades">
                                 <xs:complexType>
-                                    <xs:simpleContent>
-                                        <xs:extension base="xs:string">
-                                            <xs:attribute type="xs:string" name="value" />
-                                        </xs:extension>
-                                    </xs:simpleContent>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="estadoCaixaVelocidades" minOccurs="1" maxOccurs="unbounded"/>  
+                                    </xs:sequence>
+                                    <xs:attribute type="opcao" name="value" />
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element type="xs:string" name="estadoCaixaVelocidades" />
-                            <xs:element type="xs:short" name="NumKM" />
+                            <xs:element type="xs:short" name="NumKM"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>

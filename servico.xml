@@ -2,12 +2,11 @@
 <serviço xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="servico.xsd">
 
-    <peritagemRef id="123">
+    <peritagemRef id="123" id_parceiro="PTR2034" id_perito="PRT1028">
         <!-- Valor inteiro positivo -->
-        <IDparceiro>PTR2034</IDparceiro> <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->
-        <IDperito>PRT1028</IDperito> <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->
-        <estado type="Não Realizado">
-            <!-- Opção de "realizado" e "não realizado" -->
+        <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->
+        <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->
+        <estado type="Não realizado"> <!-- Opção de "realizado" e "não realizado" -->
             <ocorrencia>Other</ocorrencia> <!-- Opcção inaccessible Location, missing vehicle, other  SE FOR other TEM DE TER EXPLICAÇÃO ATÉ 400 caracteres-->
             <explicacao>Teste</explicacao>
         </estado>
@@ -16,46 +15,56 @@
         <horaFim>15:00:00</horaFim>
     </peritagemRef>
 
-    <Entidade>
+    <Entidade type="Cliente">  <!-- opção de "Cliente" ou "Oficina" -->
         <Nome>Miguel Barbosa</Nome>
-        <Tipo>Cliente</Tipo> <!-- opção de "Cliente" ou "Oficina" -->
     </Entidade>
 
     <Parametros>
         <!-- Nos parâmetros a opção é "Yes" ou "No" -->
-        <bateria value="No">
-            <estado>Weak</estado>
-        </bateria> <!-- Só um atributo -->
 
-        <nivelOleo value="No">
-            <estado>Dirty</estado>
-        </nivelOleo> <!-- Um ou mais atributos -->
+            <parametro tipo="bateria"> 
+                <conformidade>No</conformidade> 
+                <estado>Weak></estado> 
+            </parametro> 
+            
+        <parametro tipo="nivelOleo"> 
+                <conformidade>No</conformidade> 
+                <estado>Dirty></estado> 
+            </parametro> 
+            
+        <parametro tipo="transmissao"> 
+                <conformidade>No</conformidade> 
+                <estado>Misfiring></estado> 
+            </parametro>
+            
+        <parametro tipo="sistemaRefrigeracao"> 
+                <conformidade>No</conformidade> 
+                <estado>Radiator Damaged></estado> 
+            </parametro>
+            
+            
+        <parametro tipo="suporteMotor"> 
+                <conformidade>No</conformidade> 
+                <estado>Radiator Damaged></estado> 
+            </parametro>
+            
+        <parametro tipo="somMotor"> 
+                <conformidade>No</conformidade> 
+                <estado>Broken></estado> 
+            </parametro>
+            
+        <parametro tipo="gases"> 
+                <conformidade>No</conformidade> 
+                <estado>Black></estado> 
+            </parametro>
+            
+        <parametro tipo="caixaVelocidades"> 
+                <conformidade>No</conformidade> 
+                <estado>Burning></estado> 
+            </parametro>
+        
+        <parametro tipo="km">100</parametro>
 
-        <transmissao value="No">
-            <estado>Misfiring</estado>
-        </transmissao> <!-- Um ou mais atributos -->
-
-        <sistemaRefrigeracao value="No">
-            <estado>Radiator Damaged</estado>
-        </sistemaRefrigeracao> <!-- Um ou mais atributos -->
-
-        <suporteMotor value="No">
-            <estadoSuporteMotor>Broken</estadoSuporteMotor>
-        </suporteMotor> <!-- Só um  atributo -->
-
-        <somMotor value="No">
-            <estadoSomMotor>Noise</estadoSomMotor>
-        </somMotor> <!-- Um ou mais atributos -->
-
-        <gases value="No">
-            <estadoGases>Black</estadoGases>
-        </gases> <!-- Só um atributo -->
-
-        <caixaVelocidades value="No">
-            <estadoCaixaVelocidades>Burning</estadoCaixaVelocidades>
-        </caixaVelocidades> <!-- Um ou mais atributos -->
-
-        <NumKM>1000</NumKM>
     </Parametros>
 
 </serviço>
