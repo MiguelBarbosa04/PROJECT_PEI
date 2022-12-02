@@ -6,7 +6,8 @@
         <!-- Valor inteiro positivo -->
         <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->
         <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->
-        <estado type="Não realizado"> <!-- Opção de "realizado" e "não realizado" -->
+        <estado type="Não Realizado">
+            <!-- Opção de "realizado" e "não realizado" -->
             <ocorrencia>Other</ocorrencia> <!-- Opcção inaccessible Location, missing vehicle, other  SE FOR other TEM DE TER EXPLICAÇÃO ATÉ 400 caracteres-->
             <explicacao>Teste</explicacao>
         </estado>
@@ -15,54 +16,55 @@
         <horaFim>15:00:00</horaFim>
     </peritagemRef>
 
-    <Entidade type="Cliente">  <!-- opção de "Cliente" ou "Oficina" -->
+    <Entidade tipo="Cliente">
+        <!-- opção de "Cliente" ou "Oficina" -->
         <Nome>Miguel Barbosa</Nome>
     </Entidade>
 
     <Parametros>
         <!-- Nos parâmetros a opção é "Yes" ou "No" -->
 
-            <parametro tipo="bateria"> 
-                <conformidade>No</conformidade> 
-                <estado>Weak></estado> 
-            </parametro> 
-            
-        <parametro tipo="nivelOleo"> 
-                <conformidade>No</conformidade> 
-                <estado>Dirty></estado> 
-            </parametro> 
-            
-        <parametro tipo="transmissao"> 
-                <conformidade>No</conformidade> 
-                <estado>Misfiring></estado> 
-            </parametro>
-            
-        <parametro tipo="sistemaRefrigeracao"> 
-                <conformidade>No</conformidade> 
-                <estado>Radiator Damaged></estado> 
-            </parametro>
-            
-            
-        <parametro tipo="suporteMotor"> 
-                <conformidade>No</conformidade> 
-                <estado>Radiator Damaged></estado> 
-            </parametro>
-            
-        <parametro tipo="somMotor"> 
-                <conformidade>No</conformidade> 
-                <estado>Broken></estado> 
-            </parametro>
-            
-        <parametro tipo="gases"> 
-                <conformidade>No</conformidade> 
-                <estado>Black></estado> 
-            </parametro>
-            
-        <parametro tipo="caixaVelocidades"> 
-                <conformidade>No</conformidade> 
-                <estado>Burning></estado> 
-            </parametro>
-        
+        <parametro tipo="bateria">
+            <conformidade>No</conformidade>
+            <estado>Weak></estado>
+        </parametro>
+
+        <parametro tipo="nivelOleo">
+            <conformidade>No</conformidade>
+            <estado>Dirty></estado>
+        </parametro>
+
+        <parametro tipo="transmissao">
+            <conformidade>No</conformidade>
+            <estado>Misfiring></estado>
+        </parametro>
+
+        <parametro tipo="sistemaRefrigeracao">
+            <conformidade>No</conformidade>
+            <estado>Radiator Damaged></estado>
+        </parametro>
+
+
+        <parametro tipo="suporteMotor">
+            <conformidade>No</conformidade>
+            <estado>Radiator Damaged></estado>
+        </parametro>
+
+        <parametro tipo="somMotor">
+            <conformidade>No</conformidade>
+            <estado>Broken></estado>
+        </parametro>
+
+        <parametro tipo="gases">
+            <conformidade>No</conformidade>
+            <estado>Black></estado>
+        </parametro>
+
+        <parametro tipo="caixaVelocidades">
+            <conformidade>No</conformidade>
+            <estado>Burning></estado>
+        </parametro>
+
         <parametro tipo="km">100</parametro>
 
     </Parametros>

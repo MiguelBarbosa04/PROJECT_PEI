@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
-    
+
     <!-- Criação de um tipo de dados para o estado do serviço -->
     <xs:simpleType name="estado_peritagem">
         <xs:restriction base="xs:string">
@@ -8,7 +8,7 @@
             <xs:enumeration value="Não Realizado" />
         </xs:restriction>
     </xs:simpleType>
-    
+
     <!-- Criação de um tipo de dados para a opção de conformidade dos componentes do veículo-->
     <xs:simpleType name="opcao">
         <xs:restriction base="xs:string">
@@ -16,7 +16,7 @@
             <xs:enumeration value="No" />
         </xs:restriction>
     </xs:simpleType>
-    
+
     <!-- Criação de um tipo de dados para o estado da bateria -->
     <xs:simpleType name="bateria">
         <xs:restriction base="xs:string">
@@ -27,7 +27,7 @@
             <xs:enumeration value="Intermittent Functioning" />
         </xs:restriction>
     </xs:simpleType>
-    
+
     <!-- Criação de um tipo de dados para o estado do oleo -->
     <xs:simpleType name="oleo">
         <xs:restriction base="xs:string">
@@ -42,7 +42,7 @@
             <xs:enumeration value="Mixed with Coolant" />
         </xs:restriction>
     </xs:simpleType>
-    
+
     <!-- Criação de um tipo de dados para o estado da transmissao -->
     <xs:simpleType name="transmissao">
         <xs:restriction base="xs:string">
@@ -60,7 +60,7 @@
             <xs:enumeration value="Turbo charger not working" />
         </xs:restriction>
     </xs:simpleType>
-    
+
     <!-- Criação de um tipo de dados para o estado do sistema de refrigeracao -->
     <xs:simpleType name="refrigeracao">
         <xs:restriction base="xs:string">
@@ -70,7 +70,7 @@
             <xs:enumeration value="Radiator Damaged" />
         </xs:restriction>
     </xs:simpleType>
-    
+
     <!-- Criação de um tipo de dados para o estado do suporte do motor -->
     <xs:simpleType name="suporteMotor">
         <xs:restriction base="xs:string">
@@ -79,7 +79,7 @@
             <xs:enumeration value="Loose" />
         </xs:restriction>
     </xs:simpleType>
-    
+
     <!-- Criação de um tipo de dados para o estado do som do motor -->
     <xs:simpleType name="somMotor">
         <xs:restriction base="xs:string">
@@ -93,7 +93,7 @@
             <xs:enumeration value="Whistling Noise-Turbo" />
         </xs:restriction>
     </xs:simpleType>
-    
+
     <!-- Criação de um tipo de dados para o estado dos gases -->
     <xs:simpleType name="gases">
         <xs:restriction base="xs:string">
@@ -106,7 +106,7 @@
             <xs:enumeration value="White" />
         </xs:restriction>
     </xs:simpleType>
-    
+
     <!-- Criação de um tipo de dados para o estado da caixa de velocidades -->
     <xs:simpleType name="caixaVelocidades">
         <xs:restriction base="xs:string">
@@ -119,15 +119,15 @@
             <xs:enumeration value="Spongy" />
         </xs:restriction>
     </xs:simpleType>
-    
-    
+
+
     <xs:element name="serviço">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="peritagemRef">
                     <xs:complexType>
                         <xs:sequence>
-                            
+
                             <!--  <xs:element name="IDparceiro">
                                  Como a referência a ser inserida é um alfanumério é necessário limitar os valores os caracteres que entram no sistema
                                 <xs:simpleType>
@@ -145,7 +145,7 @@
                                     </xs:restriction>
                                 </xs:simpleType>
                             </xs:element>  -->
-                            
+
                             <xs:element name="estado">
                                 <xs:complexType>
                                     <xs:sequence>
@@ -167,36 +167,52 @@
                         </xs:sequence>
                         <!-- Valor do Código é um valor inteiro Positivo -->
                         <xs:attribute type="xs:positiveInteger" name="id" />
+                        <xs:attribute name="id_parceiro" use="required">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <!--[a-zA-Z0-9]+ = significa que podem ser inseridos valores que estejam entre 0 e 9, de a até z e A até Z  -->
+                                    <xs:pattern value="[a-zA-Z0-9]+"></xs:pattern>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="id_perito" use="required">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <!--[a-zA-Z0-9]+ = significa que podem ser inseridos valores que estejam entre 0 e 9, de a até z e A até Z  -->
+                                    <xs:pattern value="[a-zA-Z0-9]+"></xs:pattern>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="Entidade">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element type="xs:string" name="Nome" />
-                            <xs:element name="Tipo">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:string">
-                                        <xs:enumeration value="Cliente" />
-                                        <xs:enumeration value="Oficina" />
-                                    </xs:restriction>
-                                </xs:simpleType>
-                            </xs:element>
                         </xs:sequence>
+                        <xs:attribute name="tipo">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Cliente" />
+                                    <xs:enumeration value="Oficina" />
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="Parametros">
                     <xs:complexType>
                         <xs:sequence>
-                            
+
                             <xs:element name="bateria">
                                 <xs:complexType>
                                     <xs:sequence>
                                         <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="1" />
                                     </xs:sequence>
-                                    <xs:attribute type="opcao" name="value"  />
+                                    <xs:attribute type="opcao" name="value" />
                                 </xs:complexType>
                             </xs:element>
-                            
+
                             <xs:element name="nivelOleo">
                                 <xs:complexType>
                                     <xs:sequence>
@@ -205,29 +221,29 @@
                                     <xs:attribute type="opcao" name="value" />
                                 </xs:complexType>
                             </xs:element>
-                            
+
                             <xs:element name="transmissao">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="unbounded"/>
+                                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="unbounded" />
                                     </xs:sequence>
                                     <xs:attribute type="opcao" name="value" />
                                 </xs:complexType>
                             </xs:element>
-                            
+
                             <xs:element name="sistemaRefrigeracao">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="unbounded"/>
+                                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="unbounded" />
                                     </xs:sequence>
                                     <xs:attribute type="opcao" name="value" />
                                 </xs:complexType>
                             </xs:element>
-                            
+
                             <xs:element name="suporteMotor">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="1"/>
+                                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="1" />
                                     </xs:sequence>
                                     <xs:attribute type="opcao" name="value" />
                                 </xs:complexType>
@@ -235,15 +251,15 @@
                             <xs:element name="somMotor">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element type="xs:string" name="estado"  minOccurs="1" maxOccurs="unbounded"/>
+                                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="unbounded" />
                                     </xs:sequence>
-                                    <xs:attribute type="opcao" name="value"/>
+                                    <xs:attribute type="opcao" name="value" />
                                 </xs:complexType>
                             </xs:element>
                             <xs:element name="gases">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="1"/>
+                                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="1" />
                                     </xs:sequence>
                                     <xs:attribute type="opcao" name="value" />
                                 </xs:complexType>
@@ -251,12 +267,12 @@
                             <xs:element name="caixaVelocidades">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element type="xs:string" name="estadoCaixaVelocidades" minOccurs="1" maxOccurs="unbounded"/>  
+                                        <xs:element type="xs:string" name="estadoCaixaVelocidades" minOccurs="1" maxOccurs="unbounded" />
                                     </xs:sequence>
                                     <xs:attribute type="opcao" name="value" />
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element type="xs:short" name="NumKM"/>
+                            <xs:element type="xs:short" name="NumKM" />
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
