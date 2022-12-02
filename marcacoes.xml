@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <marcacoes>
     
     <codMarcacao>4</codMarcacao>  <!-- Número inteiro positivo-->
+    
     <local>
         <morada>
             <cidade>Lixa</cidade>
@@ -15,15 +15,17 @@
             </coordenadas>
         </morada>
         
-        <contactoCliente> <!-- Pode ser cliente ou oficina-->
+        <contacto type = "cliente"> <!-- Pode ser cliente ou oficina-->
             <nomePessoa>Miguel</nomePessoa>
-            <proprietario>Barbosa</proprietario>
-         </contactoCliente>
+            <proprietario>Yes</proprietario>  <!-- Yes ou No-->
+         </contacto>
         
-        <contactoOficina>
+        <!--<contacto type = "oficina">
            <nomeEstabelicimento>Estabelecimento Barbosa</nomeEstabelicimento>
-        </contactoOficina>
+        </contactoOficina> -->
         
+    </local>
+    
         <veiculo>
             <marca>BMW</marca>
             <modelo>i4</modelo>
@@ -33,6 +35,6 @@
             <potenciaCavalos>2020</potenciaCavalos>
         </veiculo>
         
-    </local>
+    
     
 </marcacoes>

@@ -1,55 +1,66 @@
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+   
+   
+    <!-- Criação de um tipo de dados para o proprietario do  veiculo -->
+    <xs:simpleType name="proprietario_veiculo">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Yes" />
+            <xs:enumeration value="No" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Criação de um tipo de dados para as opcoes de combustivel -->
+    <xs:simpleType name="combustivel_opcoes">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Diesel" />
+            <xs:enumeration value="Gasoline" />
+            <xs:enumeration value="Eltric/Gasoline" />
+            <xs:enumeration value="Eletric" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Criação de um tipo de dados para as opcoes de transmissao -->
+    <xs:simpleType name="transmissao_opcoes">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Auto" />
+            <xs:enumeration value="Manual" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    
+    <!-- Criação de um tipo de dados para as opcoes de transmissao (pessoal ou oficina)-->
+    <xs:simpleType name="contacto_opcoes">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="cliente" />
+            <xs:enumeration value="oficina" />
+        </xs:restriction>
+    </xs:simpleType>
+
     <xs:element name="marcacoes">
         <xs:complexType>
             <xs:sequence>
-                <xs:element type="xs:byte" name="codMarcacao"/>
-                <xs:element name="local">
+                <xs:element name="codMarcacao" type="xs:integer">
+                </xs:element>                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="local">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="morada">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="morada">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element type="xs:string" name="cidade"/>
-                                        <xs:element type="xs:string" name="codPostal"/>
-                                        <xs:element type="xs:string" name="rua"/>
-                                        <xs:element type="xs:short" name="porta"/>
-                                        <xs:element name="coordenadas">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                    <xs:element type="xs:float" name="latitude"/>
-                                                    <xs:element type="xs:float" name="longitude"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                    </xs:sequence>
-                                </xs:complexType>
+                            <xs:element name="cidade" type="xs:string" minOccurs="1" maxOccurs="1">
                             </xs:element>
-                            <xs:element name="contactoCliente">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element type="xs:string" name="nomePessoa"/>
-                                        <xs:element type="xs:string" name="proprietario"/>
-                                    </xs:sequence>
-                                </xs:complexType>
+                            <xs:element name="codPostal" type="xs:integer" minOccurs="1" maxOccurs="1">
                             </xs:element>
-                            <xs:element name="contactoOficina">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element type="xs:string" name="nomeEstabelicimento"/>
-                                    </xs:sequence>
-                                </xs:complexType>
+                            <xs:element name="rua" type="xs:string" minOccurs="1" maxOccurs="1">
                             </xs:element>
-                            <xs:element name="veiculo">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element type="xs:string" name="marca"/>
-                                        <xs:element type="xs:string" name="modelo"/>
-                                        <xs:element type="xs:string" name="combustivel"/>
-                                        <xs:element type="xs:string" name="transmissao"/>
-                                        <xs:element type="xs:string" name="ano"/>
-                                        <xs:element type="xs:short" name="potenciaCavalos"/>
-                                    </xs:sequence>
-                                </xs:complexType>
+                            <xs:element name="porta" type="xs:integer" minOccurs="1" maxOccurs="1">
+                            </xs:element>
+                            <xs:element name="coordenadas" maxOccurs="1">
                             </xs:element>
                         </xs:sequence>
                     </xs:complexType>
