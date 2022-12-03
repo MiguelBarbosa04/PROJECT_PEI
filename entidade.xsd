@@ -1,0 +1,20 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="entidade.xsd"
+    elementFormDefault="qualified">
+
+    <xs:complexType name="entidade">
+        <xs:sequence>
+            <xs:element type="xs:string" name="Nome" />
+        </xs:sequence>
+        <xs:attribute name="tipo">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Cliente" />
+                    <xs:enumeration value="Oficina" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+</xs:schema>

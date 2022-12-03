@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="peritagem.xsd" elementFormDefault="qualified"
+    xmlns="peritagem.xsd">
+
+    <!-- Criação de um tipo de dados para o estado do serviço -->
+    <xs:simpleType name="estado_peritagem">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Realizado" />
+            <xs:enumeration value="Não Realizado" />
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:complexType name="peritagem">
+        <xs:sequence>
+
+            <!--  
+            <xs:element name="IDparceiro">
+                Como a referência a ser inserida é um alfanumério é necessário limitar os valores os caracteres que entram no sistema
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        [a-zA-Z0-9]+ = significa que podem ser inseridos valores que estejam entre 0 e 9, de a até z e A até Z 
+                        <xs:pattern value="[a-zA-Z0-9]+"></xs:pattern>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="IDperito">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        [a-zA-Z0-9]+ = significa que podem ser inseridos valores que estejam entre 0 e 9, de a até z e A até Z 
+                        <xs:pattern value="[a-zA-Z0-9]+"></xs:pattern>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>  
+            -->
+            <xs:element name="estado">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element type="xs:string" name="ocorrencia" />
+                        <xs:element name="explicacao">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="400"></xs:maxLength>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute type="estado_peritagem" name="type"></xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            <!-- Transformar o tipo do elemento para xs:time (valor predefinido para as horas) (HH-MM-SS) -->
+            <xs:element type="xs:time" name="horaInicio" />
+            <xs:element type="xs:time" name="horaFim" />
+        </xs:sequence>
+        <!-- Valor do Código é um valor inteiro Positivo -->
+        <xs:attribute type="xs:positiveInteger" name="id" />
+        <xs:attribute name="id_parceiro" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <!--[a-zA-Z0-9]+ = significa que podem ser inseridos valores que estejam entre 0 e 9, de a até z e A até Z  -->
+                    <xs:pattern value="[a-zA-Z0-9]+"></xs:pattern>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="id_perito" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <!--[a-zA-Z0-9]+ = significa que podem ser inseridos valores que estejam entre 0 e 9, de a até z e A até Z  -->
+                    <xs:pattern value="[a-zA-Z0-9]+"></xs:pattern>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+</xs:schema>
