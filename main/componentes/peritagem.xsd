@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     targetNamespace="peritagem.xsd" elementFormDefault="qualified"
-    xmlns="peritagem.xsd">
+    xmlns="peritagem.xsd"
+    xmlns:tc="tiposComuns.xsd">
 
-    <!-- Criação de um tipo de dados para o estado do serviço -->
-    <xs:simpleType name="estado_peritagem">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="Realizado" />
-            <xs:enumeration value="Não Realizado" />
-        </xs:restriction>
-    </xs:simpleType>
+    <xs:import schemaLocation="tiposComuns.xsd" namespace="tiposComuns.xsd"></xs:import>
 
 
     <xs:complexType name="peritagem">
@@ -46,11 +41,11 @@
                             </xs:simpleType>
                         </xs:element>
                     </xs:sequence>
-                    <xs:attribute type="estado_peritagem" name="type"></xs:attribute>
+                    <xs:attribute type="tc:estado_peritagem" name="type"></xs:attribute>
                 </xs:complexType>
             </xs:element>
             <!-- Transformar o tipo do elemento para xs:time (valor predefinido para as horas) (HH-MM-SS) -->
-            <xs:element type="xs:time" name="horaInicio" />
+            <xs:element type="tc:hora" name="horaInicio" />
             <xs:element type="xs:time" name="horaFim" />
         </xs:sequence>
         <!-- Valor do Código é um valor inteiro Positivo -->

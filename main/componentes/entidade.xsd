@@ -1,0 +1,16 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="entidade.xsd"
+    elementFormDefault="qualified"
+    xmlns:tc="tiposComuns.xsd">
+
+    <xs:import schemaLocation="tiposComuns.xsd" namespace="tiposComuns.xsd"></xs:import>
+
+    <xs:complexType name="entidade">
+        <xs:sequence>
+            <xs:element type="xs:string" name="Nome" />
+        </xs:sequence>
+        <xs:attribute name="tipo" type="tc:contacto_opcoes"></xs:attribute>
+    </xs:complexType>
+
+</xs:schema>

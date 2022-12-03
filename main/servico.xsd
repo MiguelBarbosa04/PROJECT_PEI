@@ -1,0 +1,39 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="servico.xsd"
+    xmlns:par="parametros.xsd"
+    xmlns:per="peritagem.xsd"
+    xmlns:ent="entidade.xsd"
+    xmlns:tc="tiposComuns.xsd"
+    elementFormDefault="qualified">
+
+    <xs:import schemaLocation="./componentes/parametros.xsd" namespace="parametros.xsd" />
+    <xs:import schemaLocation="./componentes/peritagem.xsd" namespace="peritagem.xsd" />
+    <xs:import schemaLocation="./componentes/entidade.xsd" namespace="entidade.xsd" />
+    <xs:import schemaLocation="./componentes/tiposComuns.xsd" namespace="tiposComuns.xsd" />
+
+
+    <!-- Criação de um tipo de dados para a opção de conformidade dos componentes do veículo-->
+    <xs:simpleType name="opcao">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Yes" />
+            <xs:enumeration value="No" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="servicos">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="servico">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="peritagem" type="per:peritagem" minOccurs="1" maxOccurs="1"></xs:element>
+                            <xs:element name="entidade" type="ent:entidade" minOccurs="1" maxOccurs="1"></xs:element>
+                            <xs:element name="Parametros"></xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

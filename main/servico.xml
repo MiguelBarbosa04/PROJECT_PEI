@@ -1,22 +1,23 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <servicos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="servico.xsd">
+    xmlns="servico.xsd"
+    xmlns:per="peritagem.xsd">
 
     <servico>
 
-        <peritagem id="123" id_parceiro="PTR2034" id_perito="PRT1028">
+        <per:peritagem id="123" id_parceiro="PTR2034" id_perito="PRT1028">
             <!-- Valor inteiro positivo -->
             <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->
             <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->
-            <estado type="Não Realizado">
+            <per:estado type="Não Realizado">
                 <!-- Opção de "realizado" e "não realizado" -->
-                <ocorrencia>Other</ocorrencia> <!-- Opcção inaccessible Location, missing vehicle, other  SE FOR other TEM DE TER EXPLICAÇÃO ATÉ 400 caracteres-->
-                <explicacao>Teste</explicacao>
-            </estado>
+                <per:ocorrencia>Other</per:ocorrencia> <!-- Opcção inaccessible Location, missing vehicle, other  SE FOR other TEM DE TER EXPLICAÇÃO ATÉ 400 caracteres-->
+                <per:explicacao>Teste</per:explicacao>
+            </per:estado>
 
-            <horaInicio>13:24:21</horaInicio>
-            <horaFim>15:00:00</horaFim>
-        </peritagem>
+            <per:horaInicio>3300:24</per:horaInicio>
+            <per:horaFim>15:00:00</per:horaFim>
+        </per:peritagem>
 
         <entidade tipo="Cliente">
             <!-- opção de "Cliente" ou "Oficina" -->
@@ -66,7 +67,9 @@
                 <estado>Burning></estado>
             </parametro>
 
-            <parametro tipo="km">100</parametro>
+            <parametro tipo="km">
+                <num>100</num>
+            </parametro>
 
         </parametros>
 
