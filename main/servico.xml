@@ -15,8 +15,8 @@
                 <per:explicacao>Teste</per:explicacao>
             </per:estado>
 
-            <per:horaInicio>3300:24</per:horaInicio>
-            <per:horaFim>15:00:00</per:horaFim>
+            <per:horaInicio>12:24</per:horaInicio>
+            <per:horaFim>15:00</per:horaFim>
         </per:peritagem>
 
         <entidade tipo="Cliente">

@@ -1,31 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    targetNamespace="marcacoes.xsd"
+    xmlns:tc="tiposComuns.xsd" elementFormDefault="qualified">
 
+    <xs:import schemaLocation="./componentes/tiposComuns.xsd" namespace="tiposComuns.xsd" />
     
-
+ 
     <xs:element name="marcacoes">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="codMarcacao" type="xs:integer"></xs:element>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
-    <xs:element name="local">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="morada">
+                <xs:element name="marcacao">      
+                    <xs:complexType> 
+                        <xs:sequence>
+                            
+                <xs:element name="local">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="cidade" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
-                            <xs:element name="codPostal" type="xs:integer" minOccurs="1" maxOccurs="1"></xs:element>
-                            <xs:element name="rua" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
-                            <xs:element name="porta" type="xs:integer" minOccurs="1" maxOccurs="1"></xs:element>
-                            <xs:element name="coordenadas" type="xs:decimal" maxOccurs="1"></xs:element>
+                            <xs:element name="morada">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="cidade" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+                                        <xs:element name="codPostal" type="xs:integer" minOccurs="1" maxOccurs="1"></xs:element>
+                                        <xs:element name="rua" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+                                        <xs:element name="porta" type="xs:integer" minOccurs="1" maxOccurs="1"></xs:element>
+                                        <xs:element name="coordenadas" type="xs:decimal" maxOccurs="1"></xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="contacto">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="nome" type="xs:string"></xs:element>
+                                        <xs:element name="proprietario" type="tc:proprietario_veiculo"></xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="type" type="tc:contacto_opcoes">
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
+                            
+                <xs:element name="veiculo">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="marca" type="xs:string"></xs:element>
+                            <xs:element name="modelo" type="xs:string"></xs:element>
+                            <xs:element name="combustivel" type="tc:combustivel_opcoes"></xs:element>
+                            <xs:element name="transmissao" type="tc:transmissao_opcoes"></xs:element>
+                            <xs:element name="ano" type="xs:positiveInteger"></xs:element>
+                            <xs:element name="potencia" type="xs:positiveInteger"></xs:element> 
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:positiveInteger">
+                        </xs:attribute>   
+                    </xs:complexType> 
+                </xs:element>
             </xs:sequence>
-        </xs:complexType>
+        </xs:complexType>      
     </xs:element>
 </xs:schema>
