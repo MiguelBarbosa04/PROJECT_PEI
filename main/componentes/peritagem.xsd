@@ -10,25 +10,7 @@
     <xs:complexType name="peritagem">
         <xs:sequence>
 
-            <!--  
-            <xs:element name="IDparceiro">
-                Como a referência a ser inserida é um alfanumério é necessário limitar os valores os caracteres que entram no sistema
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        [a-zA-Z0-9]+ = significa que podem ser inseridos valores que estejam entre 0 e 9, de a até z e A até Z 
-                        <xs:pattern value="[a-zA-Z0-9]+"></xs:pattern>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="IDperito">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        [a-zA-Z0-9]+ = significa que podem ser inseridos valores que estejam entre 0 e 9, de a até z e A até Z 
-                        <xs:pattern value="[a-zA-Z0-9]+"></xs:pattern>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>  
-            -->
+            
             <xs:element name="estado">
                 <xs:complexType>
                     <xs:sequence>
