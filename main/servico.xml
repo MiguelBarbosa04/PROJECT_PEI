@@ -5,19 +5,19 @@
 
     <servico>
 
-        <per:peritagem id="123" id_parceiro="PTR2034" id_perito="PRT1028">
+        <peritagem id="123" id_parceiro="PTR2034" id_perito="PRT1028">
             <!-- Valor inteiro positivo -->
             <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->
             <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->
-            <per:estado type="Não Realizado">
+            <estado type="Não Realizado">
                 <!-- Opção de "realizado" e "não realizado" -->
-                <per:ocorrencia>Other</per:ocorrencia> <!-- Opcção inaccessible Location, missing vehicle, other  SE FOR other TEM DE TER EXPLICAÇÃO ATÉ 400 caracteres-->
-                <per:explicacao>Teste</per:explicacao>
-            </per:estado>
+                <ocorrencia>Other</ocorrencia> <!-- Opcção inaccessible Location, missing vehicle, other  SE FOR other TEM DE TER EXPLICAÇÃO ATÉ 400 caracteres-->
+                <explicacao>Teste</explicacao>
+            </estado>
 
-            <per:horaInicio>12:24</per:horaInicio>
-            <per:horaFim>15:00</per:horaFim>
-        </per:peritagem>
+            <horaInicio>12:24</horaInicio>
+            <horaFim>15:00</horaFim>
+        </peritagem>
 
         <entidade tipo="Cliente">
             <!-- opção de "Cliente" ou "Oficina" -->

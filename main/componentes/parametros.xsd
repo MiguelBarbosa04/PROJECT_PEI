@@ -7,7 +7,7 @@
     <xs:import schemaLocation="tiposComuns.xsd" namespace="tiposComuns.xsd" />
 
     <xs:complexType name="parametros">
-        <xs:sequence>
+        <xs:choice>
             <xs:element name="parametro">
                 <xs:complexType>
                     <xs:sequence>
@@ -98,7 +98,7 @@
                 </xs:complexType>
             </xs:element>
 
-        </xs:sequence>
+        </xs:choice>
     </xs:complexType>
 
 </xs:schema>

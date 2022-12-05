@@ -30,7 +30,16 @@
         </xs:restriction>
     </xs:simpleType>
 
+    <!-- Criação de um tipo de dados para as opcoes de ocorrencia -->
+    <xs:simpleType name="ocorrencia_opcoes">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="inaccessible location"/>
+            <xs:enumeration value="missing vehicle"/>
+            <xs:enumeration value="other"/>
+        </xs:restriction>
+    </xs:simpleType>
 
+    <!-- Criação de um tipo de dados para as opcoes de contacto -->
     <xs:simpleType name="contacto_opcoes">
         <xs:restriction base="xs:string">
             <xs:enumeration value="Cliente" />
