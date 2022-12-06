@@ -13,13 +13,7 @@
     <xs:import schemaLocation="./componentes/tiposComuns.xsd" namespace="tiposComuns.xsd" />
 
 
-    <!-- Criação de um tipo de dados para a opção de conformidade dos componentes do veículo-->
-    <xs:simpleType name="opcao">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="Yes" />
-            <xs:enumeration value="No" />
-        </xs:restriction>
-    </xs:simpleType>
+
 
     <xs:element name="servicos">
         <xs:complexType>
@@ -29,7 +23,7 @@
                         <xs:sequence>
                             <xs:element name="peritagem" type="per:peritagem" minOccurs="1" maxOccurs="1"></xs:element>
                             <xs:element name="entidade" type="ent:entidade" minOccurs="1" maxOccurs="1"></xs:element>
-                            <xs:element name="Parametros"></xs:element>
+                            <xs:element name="parametros" type="par:parametros"></xs:element>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>

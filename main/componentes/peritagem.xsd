@@ -9,8 +9,6 @@
 
     <xs:complexType name="peritagem">
         <xs:sequence>
-
-            
             <xs:element name="estado">
                 <xs:complexType>
                     <xs:sequence>
@@ -28,7 +26,7 @@
             </xs:element>
             <!-- Transformar o tipo do elemento para xs:time (valor predefinido para as horas) (HH-MM-SS) -->
             <xs:element type="tc:hora" name="horaInicio" />
-            <xs:element type="xs:time" name="horaFim" />
+            <xs:element type="tc:hora" name="horaFim" />
         </xs:sequence>
         <!-- Valor do Código é um valor inteiro Positivo -->
         <xs:attribute type="xs:positiveInteger" name="id" />

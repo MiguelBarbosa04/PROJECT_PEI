@@ -1,77 +1,79 @@
 <?xml version="1.1" encoding="UTF-8"?>
-<servicos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="servico.xsd"
-    xmlns:per="peritagem.xsd">
+<s:servicos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="servico.xsd servico.xsd"
+    xmlns:s="servico.xsd"
+    xmlns:per="peritagem.xsd"
+    xmlns:ent="entidade.xsd"
+    xmlns:par="parametros.xsd">
 
-    <servico>
+    <s:servico>
 
-        <peritagem id="123" id_parceiro="PTR2034" id_perito="PRT1028">
+        <s:peritagem id="123" id_parceiro="PTR2034" id_perito="PRT1028">
             <!-- Valor inteiro positivo -->
             <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->
             <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->
-            <estado type="Não Realizado">
+            <per:estado type="Não Realizado">
                 <!-- Opção de "realizado" e "não realizado" -->
-                <ocorrencia>Other</ocorrencia> <!-- Opcção inaccessible Location, missing vehicle, other  SE FOR other TEM DE TER EXPLICAÇÃO ATÉ 400 caracteres-->
-                <explicacao>Teste</explicacao>
-            </estado>
+                <per:ocorrencia>Other</per:ocorrencia> <!-- Opcção inaccessible Location, missing vehicle, other  SE FOR other TEM DE TER EXPLICAÇÃO ATÉ 400 caracteres-->
+                <per:explicacao>Teste</per:explicacao>
+            </per:estado>
 
-            <horaInicio>12:24</horaInicio>
-            <horaFim>15:00</horaFim>
-        </peritagem>
+            <per:horaInicio>23:24</per:horaInicio>
+            <per:horaFim>15:00</per:horaFim>
+        </s:peritagem>
 
-        <entidade tipo="Cliente">
+        <s:entidade tipo="Cliente">
             <!-- opção de "Cliente" ou "Oficina" -->
-            <Nome>Miguel Barbosa</Nome>
-        </entidade>
+            <ent:Nome>Miguel Barbosa</ent:Nome>
+        </s:entidade>
 
-        <parametros>
+        <s:parametros>
             <!-- Nos parâmetros a opção é "Yes" ou "No" -->
+            <par:parametro tipo="bateria">
+                <par:conformidade>No</par:conformidade>
+                <par:estado_bateria>Weak</par:estado_bateria>
+            </par:parametro>
 
-            <parametro tipo="bateria">
-                <conformidade>No</conformidade>
-                <estado>Weak></estado>
-            </parametro>
+            <par:parametro tipo="nivelOleo">
+                <par:conformidade>No</par:conformidade>
+                <par:estado_oleo>Dirty</par:estado_oleo>
+            </par:parametro>
 
-            <parametro tipo="nivelOleo">
-                <conformidade>No</conformidade>
-                <estado>Dirty></estado>
-            </parametro>
+            <par:parametro tipo="transmissao">
+                <par:conformidade>No</par:conformidade>
+                <par:estado_transmissao>Misfiring</par:estado_transmissao>
+            </par:parametro>
 
-            <parametro tipo="transmissao">
-                <conformidade>No</conformidade>
-                <estado>Misfiring></estado>
-            </parametro>
+            <par:parametro tipo="sistemaRefrigeracao">
+                <par:conformidade>No</par:conformidade>
+                <par:estado_sistemaRefrigeracao>Radiator Damaged</par:estado_sistemaRefrigeracao>
+            </par:parametro>
 
-            <parametro tipo="sistemaRefrigeracao">
-                <conformidade>No</conformidade>
-                <estado>Radiator Damaged></estado>
-            </parametro>
+            <par:parametro tipo="suporteMotor">
+                <par:conformidade>No</par:conformidade>
+                <par:estado_suporteMotor>Excess Vibration</par:estado_suporteMotor>
+            </par:parametro>
 
-            <parametro tipo="suporteMotor">
-                <conformidade>No</conformidade>
-                <estado>Radiator Damaged></estado>
-            </parametro>
+            <par:parametro tipo="somMotor">
+                <par:conformidade>No</par:conformidade>
+                <par:estado_somMotor>Engine Auxiliary Noise</par:estado_somMotor>
+            </par:parametro>
 
-            <parametro tipo="somMotor">
-                <conformidade>No</conformidade>
-                <estado>Broken></estado>
-            </parametro>
+            <par:parametro tipo="gases">
+                <par:conformidade>No</par:conformidade>
+                <par:estado_gases>Black</par:estado_gases>
+            </par:parametro>
 
-            <parametro tipo="gases">
-                <conformidade>No</conformidade>
-                <estado>Black></estado>
-            </parametro>
+            <par:parametro tipo="caixaVelocidades">
+                <par:conformidade>No</par:conformidade>
+                <par:estado_caixaVelocidades>Burning</par:estado_caixaVelocidades>
+            </par:parametro>
 
-            <parametro tipo="caixaVelocidades">
-                <conformidade>No</conformidade>
-                <estado>Burning></estado>
-            </parametro>
+            <par:parametro tipo="km">
+                <par:num>100</par:num>
+            </par:parametro>
 
-            <parametro tipo="km">
-                <num>100</num>
-            </parametro>
+        </s:parametros>
 
-        </parametros>
-
-    </servico>
-</servicos>
+    </s:servico>
+</s:servicos>

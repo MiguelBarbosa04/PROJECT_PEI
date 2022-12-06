@@ -7,98 +7,25 @@
     <xs:import schemaLocation="tiposComuns.xsd" namespace="tiposComuns.xsd" />
 
     <xs:complexType name="parametros">
-        <xs:choice>
-            <xs:element name="parametro">
+        <xs:sequence>
+            <xs:element name="parametro" maxOccurs="unbounded">
                 <xs:complexType>
-                    <xs:sequence>
+                    <xs:choice maxOccurs="unbounded">
                         <xs:element name="conformidade"></xs:element>
-                        <xs:element name="estado" type="tc:bateria"></xs:element>
-                    </xs:sequence>
-                    <xs:attribute name="tipo" type="xs:string" fixed="bateria"></xs:attribute>
-                </xs:complexType>
-            </xs:element>
-
-            <xs:element name="parametro">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="conformidade"></xs:element>
-                        <xs:element name="estado" type="tc:oleo"></xs:element>
-                    </xs:sequence>
-                    <xs:attribute name="tipo" type="xs:string" fixed="nivelOleo"></xs:attribute>
-                </xs:complexType>
-            </xs:element>
-
-            <xs:element name="parametro">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="conformidade"></xs:element>
-                        <xs:element name="estado" type="tc:transmissao"></xs:element>
-                    </xs:sequence>
-                    <xs:attribute name="tipo" type="xs:string" fixed="transmissao"></xs:attribute>
-                </xs:complexType>
-            </xs:element>
-
-            <xs:element name="parametro">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="conformidade"></xs:element>
-                        <xs:element name="estado" type="tc:refrigeracao"></xs:element>
-                    </xs:sequence>
-                    <xs:attribute name="tipo" type="xs:string" fixed="sistemaRefrigeracao"></xs:attribute>
-                </xs:complexType>
-            </xs:element>
-
-            <xs:element name="parametro">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="conformidade"></xs:element>
-                        <xs:element name="estado" type="tc:suporteMotor"></xs:element>
-                    </xs:sequence>
-                    <xs:attribute name="tipo" type="xs:string" fixed="suporteMotor"></xs:attribute>
-                </xs:complexType>
-            </xs:element>
-
-            <xs:element name="parametro">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="conformidade"></xs:element>
-                        <xs:element name="estado" type="tc:somMotor"></xs:element>
-                    </xs:sequence>
-                    <xs:attribute name="tipo" type="xs:string" fixed="somMotor"></xs:attribute>
-                </xs:complexType>
-            </xs:element>
-
-            <xs:element name="parametro">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="conformidade"></xs:element>
-                        <xs:element name="estado" type="tc:gases"></xs:element>
-                    </xs:sequence>
-                    <xs:attribute name="tipo" type="xs:string" fixed="gases"></xs:attribute>
-                </xs:complexType>
-            </xs:element>
-
-            <xs:element name="parametro">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="conformidade"></xs:element>
-                        <xs:element name="estado" type="tc:caixaVelocidades"></xs:element>
-                    </xs:sequence>
-                    <xs:attribute name="tipo" type="xs:string" fixed="caixaVelocidades"></xs:attribute>
-                </xs:complexType>
-            </xs:element>
-
-
-            <xs:element name="parametro">
-                <xs:complexType>
-                    <xs:sequence>
+                        <xs:element name="estado_bateria" type="tc:bateria"></xs:element>
+                        <xs:element name="estado_oleo" type="tc:oleo"></xs:element>
+                        <xs:element name="estado_transmissao" type="tc:transmissao"></xs:element>
+                        <xs:element name="estado_sistemaRefrigeracao" type="tc:refrigeracao"></xs:element>
+                        <xs:element name="estado_suporteMotor" type="tc:suporteMotor"></xs:element>
+                        <xs:element name="estado_somMotor" type="tc:somMotor"></xs:element>
+                        <xs:element name="estado_gases" type="tc:gases"></xs:element>
+                        <xs:element name="estado_caixaVelocidades" type="tc:caixaVelocidades"></xs:element>
                         <xs:element name="num" type="xs:positiveInteger"></xs:element>
-                    </xs:sequence>
-                    <xs:attribute name="tipo" type="xs:string" fixed="km"></xs:attribute>
+                    </xs:choice>
+                    <xs:attribute name="tipo" type="tc:parametros_opcoes"></xs:attribute>
                 </xs:complexType>
             </xs:element>
-
-        </xs:choice>
+        </xs:sequence>
     </xs:complexType>
 
 </xs:schema>

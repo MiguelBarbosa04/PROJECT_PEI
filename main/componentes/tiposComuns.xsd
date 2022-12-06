@@ -4,6 +4,14 @@
     xmlns="tiposComuns.xsd">
 
 
+    <!-- Criação de um tipo de dados para a opção de conformidade dos componentes do veículo-->
+    <xs:simpleType name="opcao">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Yes" />
+            <xs:enumeration value="No" />
+        </xs:restriction>
+    </xs:simpleType>
+
     <!-- Criação de um tipo de dados para o proprietario do  veiculo -->
     <xs:simpleType name="proprietario_veiculo">
         <xs:restriction base="xs:string">
@@ -33,9 +41,9 @@
     <!-- Criação de um tipo de dados para as opcoes de ocorrencia -->
     <xs:simpleType name="ocorrencia_opcoes">
         <xs:restriction base="xs:string">
-            <xs:enumeration value="inaccessible location"/>
-            <xs:enumeration value="missing vehicle"/>
-            <xs:enumeration value="other"/>
+            <xs:enumeration value="inaccessible location" />
+            <xs:enumeration value="missing vehicle" />
+            <xs:enumeration value="other" />
         </xs:restriction>
     </xs:simpleType>
 
@@ -56,8 +64,28 @@
     </xs:simpleType>
 
     <xs:simpleType name="hora">
-        <xs:restriction base="xs:time">
+        <xs:restriction base="xs:string">
             <xs:pattern value="[0-2][0-9]:[0-5][0-9]"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="cod_postal">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{4}-[0-9]{3}"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="parametros_opcoes">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="bateria" />
+            <xs:enumeration value="nivelOleo" />
+            <xs:enumeration value="transmissao" />
+            <xs:enumeration value="sistemaRefrigeracao" />
+            <xs:enumeration value="suporteMotor" />
+            <xs:enumeration value="somMotor" />
+            <xs:enumeration value="gases" />
+            <xs:enumeration value="caixaVelocidades" />
+            <xs:enumeration value="km" />
         </xs:restriction>
     </xs:simpleType>
 

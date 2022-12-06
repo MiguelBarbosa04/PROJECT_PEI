@@ -1,68 +1,134 @@
 <xs:element name="bateria">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="1" />
-                    </xs:sequence>
-                    <xs:attribute type="tc:bateria" name="value" />
-                </xs:complexType>
-            </xs:element>
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+        <xs:attribute type="tc:bateria" name="value" />
+    </xs:complexType>
+</xs:element>
+<xs:element name="nivelOleo">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute type="opcao" name="value" />
+    </xs:complexType>
+</xs:element>
+<xs:element name="transmissao">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute type="opcao" name="value" />
+    </xs:complexType>
+</xs:element>
+<xs:element name="sistemaRefrigeracao">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute type="opcao" name="value" />
+    </xs:complexType>
+</xs:element>
+<xs:element name="suporteMotor">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+        <xs:attribute type="opcao" name="value" />
+    </xs:complexType>
+</xs:element><xs:element name="somMotor">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute type="opcao" name="value" />
+    </xs:complexType>
+</xs:element><xs:element name="gases">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+        <xs:attribute type="opcao" name="value" />
+    </xs:complexType>
+</xs:element><xs:element name="caixaVelocidades">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element type="xs:string" name="estadoCaixaVelocidades" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute type="opcao" name="value" />
+    </xs:complexType>
+</xs:element>
 
-            <xs:element name="nivelOleo">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="unbounded" />
-                    </xs:sequence>
-                    <xs:attribute type="opcao" name="value" />
-                </xs:complexType>
-            </xs:element>
+<xs:element name="parametro">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="conformidade"></xs:element>
+            <xs:element name="estado" type="tc:oleo"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="tipo" type="xs:string"></xs:attribute>
+    </xs:complexType>
+</xs:element>
+<xs:element name="parametro">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="conformidade"></xs:element>
+            <xs:element name="estado" type="tc:transmissao"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="tipo" type="xs:string"></xs:attribute>
+    </xs:complexType>
+</xs:element>
+<xs:element name="parametro">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="conformidade"></xs:element>
+            <xs:element name="estado" type="tc:refrigeracao"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="tipo" type="xs:string"></xs:attribute>
+    </xs:complexType>
+</xs:element>
+<xs:element name="parametro">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="conformidade"></xs:element>
+            <xs:element name="estado" type="tc:suporteMotor"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="tipo" type="xs:string"></xs:attribute>
+    </xs:complexType>
+</xs:element>
+<xs:element name="parametro">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="conformidade"></xs:element>
+            <xs:element name="estado" type="tc:somMotor"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="tipo" type="xs:string"></xs:attribute>
+    </xs:complexType>
+</xs:element>
+<xs:element name="parametro">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="conformidade"></xs:element>
+            <xs:element name="estado" type="tc:gases"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="tipo" type="xs:string"></xs:attribute>
+    </xs:complexType>
+</xs:element>
+<xs:element name="parametro">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="conformidade"></xs:element>
+            <xs:element name="estado" type="tc:caixaVelocidades"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="tipo" type="xs:string"></xs:attribute>
+    </xs:complexType>
+</xs:element>
 
-            <xs:element name="transmissao">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="unbounded" />
-                    </xs:sequence>
-                    <xs:attribute type="opcao" name="value" />
-                </xs:complexType>
-            </xs:element>
-
-            <xs:element name="sistemaRefrigeracao">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="unbounded" />
-                    </xs:sequence>
-                    <xs:attribute type="opcao" name="value" />
-                </xs:complexType>
-            </xs:element>
-
-            <xs:element name="suporteMotor">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="1" />
-                    </xs:sequence>
-                    <xs:attribute type="opcao" name="value" />
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="somMotor">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="unbounded" />
-                    </xs:sequence>
-                    <xs:attribute type="opcao" name="value" />
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="gases">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element type="xs:string" name="estado" minOccurs="1" maxOccurs="1" />
-                    </xs:sequence>
-                    <xs:attribute type="opcao" name="value" />
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="caixaVelocidades">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element type="xs:string" name="estadoCaixaVelocidades" minOccurs="1" maxOccurs="unbounded" />
-                    </xs:sequence>
-                    <xs:attribute type="opcao" name="value" />
-                </xs:complexType>
-            </xs:element>
+<xs:element name="parametro">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="num" type="xs:positiveInteger"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="tipo" type="xs:string"></xs:attribute>
+    </xs:complexType>
+</xs:element>
