@@ -23,9 +23,9 @@
                 <m:proprietario>Yes</m:proprietario> <!-- Yes ou No-->
             </m:contacto>
 
-            <!--<contacto type = "oficina">
-           <nomeEstabelicimento>Estabelecimento Barbosa</nomeEstabelicimento>
-        </contactoOficina> -->
+<!--ADIICIONAR <per:dia>1/1/2020</per:dia> e por no peritagem.xsd
+            <per:horaInicio>23:24</per:horaInicio>
+            <per:horaFim>15:00</per:horaFim> -->
 
         </m:local>
 
