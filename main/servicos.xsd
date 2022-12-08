@@ -1,6 +1,6 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="servico.xsd"
+    targetNamespace="servicos.xsd"
     xmlns:par="parametros.xsd"
     xmlns:per="peritagem.xsd"
     xmlns:ent="entidade.xsd"
@@ -13,20 +13,10 @@
     <xs:import schemaLocation="./componentes/tiposComuns.xsd" namespace="tiposComuns.xsd" />
 
 
-
-
     <xs:element name="servicos">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="servico">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="peritagem" type="per:peritagem" minOccurs="1" maxOccurs="1"></xs:element>
-                            <xs:element name="entidade" type="ent:entidade" minOccurs="1" maxOccurs="1"></xs:element>
-                            <xs:element name="parametros" type="par:parametros"></xs:element>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
+                <xs:element name="peritagem" type="per:peritagem" minOccurs="1" maxOccurs="1"></xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

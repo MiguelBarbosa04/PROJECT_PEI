@@ -1,36 +1,33 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <s:servicos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="servico.xsd servico.xsd"
-    xmlns:s="servico.xsd"
+    xsi:schemaLocation="servicos.xsd servicos.xsd"
+    xmlns:s="servicos.xsd"
     xmlns:per="peritagem.xsd"
     xmlns:ent="entidade.xsd"
     xmlns:par="parametros.xsd">
 
-    <s:servico>
+    <s:peritagem id="123" id_parceiro="PTR2034" id_perito="PRT1028">
+        <!-- Valor inteiro positivo -->
+        <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->
+        <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->
+        <per:estado type="Não Realizado">
+            <!-- Opção de "realizado" e "não realizado" -->
+            <per:ocorrencia>Other</per:ocorrencia> <!-- Opcção inaccessible Location, missing vehicle, other  SE FOR other TEM DE TER EXPLICAÇÃO ATÉ 400 caracteres-->
+            <per:explicacao>Teste</per:explicacao>
+        </per:estado>
 
-        <s:peritagem id="123" id_parceiro="PTR2034" id_perito="PRT1028">
-            <!-- Valor inteiro positivo -->
-            <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->
-            <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->
-            <per:estado type="Não Realizado">
-                <!-- Opção de "realizado" e "não realizado" -->
-                <per:ocorrencia>Other</per:ocorrencia> <!-- Opcção inaccessible Location, missing vehicle, other  SE FOR other TEM DE TER EXPLICAÇÃO ATÉ 400 caracteres-->
-                <per:explicacao>Teste</per:explicacao>
-            </per:estado>
+        <per:data>
+            <per:horaInicio>10:24</per:horaInicio>
+            <per:horaFim>15:00</per:horaFim>
+        </per:data>
 
-            <per:data>
-                <per:horaInicio>10:24</per:horaInicio>
-                <per:horaFim>15:00</per:horaFim>
-            </per:data>
 
-        </s:peritagem>
-
-        <s:entidade tipo="Cliente">
+        <per:entidade tipo="Cliente">
             <!-- opção de "Cliente" ou "Oficina" -->
             <ent:Nome>Miguel Barbosa</ent:Nome>
-        </s:entidade>
+        </per:entidade>
 
-        <s:parametros>
+        <per:parametros>
             <!-- Nos parâmetros a opção é "Yes" ou "No" -->
             <par:parametro tipo="bateria">
                 <par:conformidade>No</par:conformidade>
@@ -76,7 +73,7 @@
                 <par:num>100</par:num>
             </par:parametro>
 
-        </s:parametros>
+        </per:parametros>
 
-    </s:servico>
+    </s:peritagem>
 </s:servicos>

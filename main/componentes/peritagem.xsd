@@ -2,9 +2,14 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     targetNamespace="peritagem.xsd" elementFormDefault="qualified"
     xmlns="peritagem.xsd"
-    xmlns:tc="tiposComuns.xsd">
+    xmlns:par="parametros.xsd"
+    xmlns:tc="tiposComuns.xsd"
+    xmlns:per="peritagem.xsd"
+    xmlns:ent="entidade.xsd">
 
     <xs:import schemaLocation="tiposComuns.xsd" namespace="tiposComuns.xsd"></xs:import>
+    <xs:import schemaLocation="parametros.xsd" namespace="parametros.xsd" />
+    <xs:import schemaLocation="entidade.xsd" namespace="entidade.xsd" />
 
 
     <xs:complexType name="peritagem">
@@ -33,6 +38,11 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+
+
+            <xs:element name="entidade" type="ent:entidade" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element name="parametros" type="par:parametros"></xs:element>
+
         </xs:sequence>
         <!-- Valor do Código é um valor inteiro Positivo -->
         <xs:attribute type="xs:positiveInteger" name="id" />
