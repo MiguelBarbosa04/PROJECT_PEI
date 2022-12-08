@@ -25,8 +25,14 @@
                 </xs:complexType>
             </xs:element>
             <!-- Transformar o tipo do elemento para xs:time (valor predefinido para as horas) (HH-MM-SS) -->
-            <xs:element type="tc:hora" name="horaInicio" />
-            <xs:element type="tc:hora" name="horaFim" />
+            <xs:element name="data">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element type="tc:hora" name="horaInicio" />
+                        <xs:element type="tc:hora" name="horaFim" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
         </xs:sequence>
         <!-- Valor do Código é um valor inteiro Positivo -->
         <xs:attribute type="xs:positiveInteger" name="id" />

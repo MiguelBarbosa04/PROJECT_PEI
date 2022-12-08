@@ -18,8 +18,11 @@
                 <per:explicacao>Teste</per:explicacao>
             </per:estado>
 
-            <per:horaInicio>23:24</per:horaInicio>
-            <per:horaFim>15:00</per:horaFim>
+            <per:data>
+                <per:horaInicio>10:24</per:horaInicio>
+                <per:horaFim>15:00</per:horaFim>
+            </per:data>
+
         </s:peritagem>
 
         <s:entidade tipo="Cliente">

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="local.xsd" elementFormDefault="qualified"
+    xmlns="local.xsd"
+    xmlns:tc="tiposComuns.xsd">
+
+    <xs:import schemaLocation="./tiposComuns.xsd" namespace="tiposComuns.xsd"></xs:import>
+
+    <xs:complexType name="local">
+        <xs:sequence>
+            <xs:element name="morada">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="cidade" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+                        <xs:element name="codPostal" type="tc:cod_postal" minOccurs="1" maxOccurs="1"></xs:element>
+                        <xs:element name="rua" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+                        <xs:element name="porta" type="xs:integer" minOccurs="1" maxOccurs="1"></xs:element>
+                        <xs:element name="coordenadas" maxOccurs="1">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="latitude" type="xs:decimal"></xs:element>
+                                    <xs:element name="longitude" type="xs:decimal"></xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="contacto">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="nome" type="xs:string"></xs:element>
+                        <xs:element name="proprietario" type="tc:proprietario_veiculo"></xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="type" type="tc:contacto_opcoes"></xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>    

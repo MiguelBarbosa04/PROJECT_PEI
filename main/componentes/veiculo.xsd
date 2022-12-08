@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="veiculo.xsd" elementFormDefault="qualified"
+    xmlns="veiculo.xsd"
+    xmlns:tc="tiposComuns.xsd">
+
+    <xs:import schemaLocation="./tiposComuns.xsd" namespace="tiposComuns.xsd"></xs:import>
+
+    <xs:complexType name="veiculo">
+        <xs:sequence>
+            <xs:element name="marca" type="xs:string"></xs:element>
+            <xs:element name="modelo" type="xs:string"></xs:element>
+            <xs:element name="combustivel" type="tc:combustivel_opcoes"></xs:element>
+            <xs:element name="transmissao" type="tc:transmissao_opcoes"></xs:element>
+            <xs:element name="ano" type="xs:positiveInteger"></xs:element>
+            <xs:element name="potencia" type="xs:positiveInteger"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
