@@ -17,9 +17,12 @@
                 <per:ocorrencia>Other</per:ocorrencia> <!-- Opcção inaccessible Location, missing vehicle, other  SE FOR other TEM DE TER EXPLICAÇÃO ATÉ 400 caracteres-->
                 <per:explicacao>Teste</per:explicacao>
             </per:estado>
-            <!--ADIICIONAR <per:dia>1/1/2020</per:dia> e por no peritagem.xsd-->
-            <per:horaInicio>23:24</per:horaInicio>
-            <per:horaFim>15:00</per:horaFim>
+
+            <per:data>
+                <per:horaInicio>10:24</per:horaInicio>
+                <per:horaFim>15:00</per:horaFim>
+            </per:data>
+
         </s:peritagem>
 
         <s:entidade tipo="Cliente">

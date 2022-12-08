@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <m:marcacoes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="marcacoes.xsd marcacoes.xsd"
-    xmlns:m="marcacoes.xsd">
+    xmlns:m="marcacoes.xsd"
+    xmlns:l="local.xsd"
+    xmlns:v="veiculo.xsd">
 
     <m:marcacao id="3">
         <!-- Número inteiro positivo-->
         <m:local>
-            <m:morada>
-                <m:cidade>Lixa</m:cidade>
-                <m:codPostal>4615-594</m:codPostal> <!-- Pattern ZIP CODE -->
-                <m:rua>Rua Doutor António Manuel Cerqueira Magro </m:rua>
-                <m:porta>200</m:porta>
-                <m:coordenadas>
+            <l:morada>
+                <l:cidade>Lixa</l:cidade>
+                <l:codPostal>4615-594</l:codPostal> <!-- Pattern ZIP CODE -->
+                <l:rua>Rua Doutor António Manuel Cerqueira Magro </l:rua>
+                <l:porta>200</l:porta>
+                <l:coordenadas>
                     <!-- Opcional-->
-                    <m:latitude>41.324084</m:latitude>
-                    <m:longitude>-8.145412</m:longitude>
-                </m:coordenadas>
-            </m:morada>
+                    <l:latitude>41.324084</l:latitude>
+                    <l:longitude>-8.145412</l:longitude>
+                </l:coordenadas>
+            </l:morada>
 
-            <m:contacto type="Cliente">
+            <l:contacto type="Cliente">
                 <!-- Pode ser cliente ou oficina-->
-                <m:nome>Miguel</m:nome>
-                <m:proprietario>Yes</m:proprietario> <!-- Yes ou No-->
-            </m:contacto>
+                <l:nome>Miguel</l:nome>
+                <l:proprietario>Yes</l:proprietario> <!-- Yes ou No-->
+            </l:contacto>
 
 <!--ADIICIONAR <per:dia>1/1/2020</per:dia> e por no peritagem.xsd
             <per:horaInicio>23:24</per:horaInicio>
@@ -30,12 +32,12 @@
         </m:local>
 
         <m:veiculo>
-            <m:marca>BMW</m:marca>
-            <m:modelo>i4</m:modelo>
-            <m:combustivel>Eletric</m:combustivel> <!-- Tem opções "Diesel", "Gasoline", "Eletric/Gasoline" ou "Eletric"-->
-            <m:transmissao>Auto</m:transmissao> <!-- "Auto" ou "Manual"-->
-            <m:ano>2020</m:ano>
-            <m:potencia>200</m:potencia>
+            <v:marca>BMW</v:marca>
+            <v:modelo>i4</v:modelo>
+            <v:combustivel>Eletric</v:combustivel> <!-- Tem opções "Diesel", "Gasoline", "Eletric/Gasoline" ou "Eletric"-->
+            <v:transmissao>Auto</v:transmissao> <!-- "Auto" ou "Manual"-->
+            <v:ano>2020</v:ano>
+            <v:potencia>200</v:potencia>
         </m:veiculo>
 
     </m:marcacao>
