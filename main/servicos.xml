@@ -6,10 +6,13 @@
     xmlns:ent="entidade.xsd"
     xmlns:par="parametros.xsd">
 
-    <s:peritagem id="123" id_parceiro="PTR2034" id_perito="PRT1028">
+    <s:peritagem id="123">
         <!-- Valor inteiro positivo -->
         <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->
         <!-- O IDparceiro e IDperito tem que ser com dados alfanuméricos -->
+        <per:parceiro>PTR2034</per:parceiro>
+        <per:perito>PRT1028</per:perito>
+
         <per:estado type="Não Realizado">
             <!-- Opção de "realizado" e "não realizado" -->
             <per:ocorrencia>Other</per:ocorrencia> <!-- Opcção inaccessible Location, missing vehicle, other  SE FOR other TEM DE TER EXPLICAÇÃO ATÉ 400 caracteres-->
