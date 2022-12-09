@@ -6,6 +6,17 @@
 
     <m:marcacao id="3">
         <!-- Número inteiro positivo-->
+
+        <!-- Adicionado para as XQuerys -->
+        <m:parceiro>PTR2034</m:parceiro>
+        <m:perito>PRT1028</m:perito>
+
+        <!-- Adicionado para as XQuerys -->
+        <m:data>
+            <m:dia>09/12/2022</m:dia>
+            <m:hora>12:00</m:hora>
+        </m:data>
+
         <m:local>
             <l:morada>
                 <l:cidade>Lixa</l:cidade>
@@ -24,10 +35,6 @@
                 <l:nome>Miguel</l:nome>
                 <l:proprietario>Yes</l:proprietario> <!-- Yes ou No-->
             </l:contacto>
-
-<!--ADIICIONAR <per:dia>1/1/2020</per:dia> e por no peritagem.xsd
-            <per:horaInicio>23:24</per:horaInicio>
-            <per:horaFim>15:00</per:horaFim> -->
 
         </m:local>
 

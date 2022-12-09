@@ -14,22 +14,8 @@
 
     <xs:complexType name="peritagem">
         <xs:sequence>
-            <xs:element name="parceiro">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <!--[a-zA-Z0-9]+ = significa que podem ser inseridos valores que estejam entre 0 e 9, de a até z e A até Z  -->
-                        <xs:pattern value="[a-zA-Z0-9]+"></xs:pattern>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="perito">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <!--[a-zA-Z0-9]+ = significa que podem ser inseridos valores que estejam entre 0 e 9, de a até z e A até Z  -->
-                        <xs:pattern value="[a-zA-Z0-9]+"></xs:pattern>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
+            <xs:element name="parceiro" type="tc:id_alfanumerico"></xs:element>
+            <xs:element name="perito" type="tc:id_alfanumerico"></xs:element>
             <xs:element name="estado">
                 <xs:complexType>
                     <xs:sequence>
