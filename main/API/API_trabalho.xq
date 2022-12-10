@@ -2,7 +2,7 @@ module namespace page = 'http://basex.org/examples/web-page';
 
 declare namespace per = 'peritagem.xsd';
 declare namespace m = 'marcacoes.xsd';
-
+declare namespace s = 'servicos.xsd';
 declare function page:createdb() {
   
  (:let $dbexists := db:exists("servicos")
@@ -39,7 +39,7 @@ declare
     
 };
 
-declare 
+declare (:Consultar os dados de uma peritagem.:)
   %rest:path("/peritagem/{$id}")
   %rest:GET
   
@@ -51,16 +51,22 @@ declare
   };
   
 
-declare 
-  %rest:path("/peritagem/estado")
+declare (:Apresentar as peritagens realizadas/não realizadas num determinado dia para um dado parceiro;:)
+  %rest:path("/peritagem/parceiro")
   %rest:GET
-  %rest:query-param("estado", "{$estado}")
+  %rest:query-param("parceiro", "{$parceiro}")
+  %rest:query-param("dia", "{$dia}")
   
-  function page:getPeritagemByStatus($estado as xs:string) {
+  function page:getPeritagemByParceiro($parceiro as xs:string, $dia as xs:string) {
     
-    for $peritagem in db:open("servicos")//peritagem
-    where $peritagem/per:estado[@type = $estado]
-    return $peritagem
+    
+    for $peritagem in db:open("servicos")//s:peritagem
+    let $marcacao := db:open("marcacoes")//m:marcacao[@id=$peritagem[@id]]
+    (:where $peritagem/per:parceiro=$parceiro:) (:and $marcacao//m:dia = $dia:)
+    return if ($marcacao//m:dia=$dia) then <peritagem>{
+     $peritagem
+    }</peritagem>
+    
   };
   
 declare
