@@ -20,6 +20,7 @@
         </per:estado>
 
         <per:data>
+            <per:dia>2022-12-09</per:dia>
             <per:horaInicio>10:24</per:horaInicio>
             <per:horaFim>15:00</per:horaFim>
         </per:data>

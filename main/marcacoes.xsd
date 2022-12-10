@@ -20,7 +20,7 @@
                             <xs:element name="data">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="dia" type="tc:dia"></xs:element>
+                                        <xs:element name="dia" type="xs:date"></xs:element>
                                         <xs:element name="hora" type="tc:hora"></xs:element>
                                     </xs:sequence>
                                 </xs:complexType>

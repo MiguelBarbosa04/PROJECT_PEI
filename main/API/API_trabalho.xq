@@ -39,6 +39,36 @@ declare
     
 };
 
+declare (:Apresentar as marcações associadas a um perito para o dia atual;:)
+  %rest:path("/marcacao/perito")
+  %rest:GET
+  %rest:query-param("perito", "{$perito}")
+
+  
+  function page:getPeritagemByPerito($perito as xs:string) {
+     let $dia_atual := fn:format-date(fn:current-date(),"[Y0001]-[M01]-[D01]" ) 
+    
+    for $marcacao in db:open("marcacoes")//marcacao
+    where $marcacao/m:perito=$perito and $marcacao//m:dia = $dia_atual
+    return  $marcacao
+    
+};
+
+declare (:Apresentar as peritagens realizadas/não realizadas num determinado dia para um dado parceiro;:)
+  %rest:path("/peritagem/parceiro")
+  %rest:GET
+  %rest:query-param("parceiro", "{$parceiro}")
+  %rest:query-param("dia", "{$dia}")
+  
+  function page:getPeritagemByParceiro($parceiro as xs:string, $dia as xs:date) {
+    
+    
+    for $peritagem in db:open("servicos")//peritagem
+    where $peritagem/per:parceiro=$parceiro and $peritagem//per:dia = $dia
+    return  $peritagem
+};
+  
+  
 declare (:Consultar os dados de uma peritagem.:)
   %rest:path("/peritagem/{$id}")
   %rest:GET
@@ -51,24 +81,7 @@ declare (:Consultar os dados de uma peritagem.:)
   };
   
 
-declare (:Apresentar as peritagens realizadas/não realizadas num determinado dia para um dado parceiro;:)
-  %rest:path("/peritagem/parceiro")
-  %rest:GET
-  %rest:query-param("parceiro", "{$parceiro}")
-  %rest:query-param("dia", "{$dia}")
-  
-  function page:getPeritagemByParceiro($parceiro as xs:string, $dia as xs:string) {
-    
-    
-    for $peritagem in db:open("servicos")//s:peritagem
-    let $marcacao := db:open("marcacoes")//m:marcacao[@id=$peritagem[@id]]
-    (:where $peritagem/per:parceiro=$parceiro:) (:and $marcacao//m:dia = $dia:)
-    return if ($marcacao//m:dia=$dia) then <peritagem>{
-     $peritagem
-    }</peritagem>
-    
-  };
-  
+
 declare
   %updating
   %rest:path("/addmarcacao")
@@ -82,7 +95,7 @@ declare
     
     let $newbody := (
     <marcacao id="{$count}">
-      {$body//m:local , $body//m:veiculo}
+      {$body//m:parceiro,$body//m:perito, $body//m:data, $body//m:local , $body//m:veiculo}
     </marcacao>
   )
     
