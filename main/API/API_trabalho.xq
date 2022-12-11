@@ -16,28 +16,71 @@ declare function page:createdb() {
          :)
 };
 
+
+
+
 declare
   %updating
-  %rest:path("/addservico")
+  %rest:path("/addperitagem")
   %rest:POST("{$body}")
   
-  function page:addservico($body) {
+  function page:addperitagem($body) {
     
     let $createdb := page:createdb()
     
-    let $count := 1 + count(db:open("servicos")/peritagem) (: autoincrement ID :)
+    let $marcacaoId :=  db:open("marcacoes")//m:marcacao/@id/string()
     
-    let $newbody := (
-    <peritagem id="{$count}">
-      {$body//per:parceiro , $body//per:perito, $body//per:estado, $body//per:data, $body//per:entidade, $body//per:parametros}
-    </peritagem>
-  )
+    let $validate := $body//s:peritagem[@id = $marcacaoId]
+       
+    let $some := some $body in ("API_trabalho.xq") satisfies ($validate)
+       
+    return if ($some) then 
+      (update:output("Sucesso. Servico válido"), insert node $body//s:peritagem as last into db:open("servicos")//s:servicos)
+      else
+      (update:output("Erro! Id da peritagem inválido."))
+    
+      
+     
   
 (: Validar id peritagem com id marcação!!! :)
     
+};
+
+
+(:
+
+db:add("servicos", $body, "servico.xml")
+
+declare
+  %updating
+  %rest:path("/addperitagem")
+  %rest:POST("{$body}")
+
+  function page:addperitagem($body) {
+    
+    let $newbody := 
+    
+     <peritagem id="{$body//s:peritagem/@id}">
+         <parceiro>{$body//per:parceiro/text()}</parceiro>
+         <perito>{$body//per:perito/text()}</perito>
+         <estado type="{$body//per:estado[@id]}">
+           <ocorrencia>{$body//per:occorencia/text()}</ocorrencia>
+           <explicacao>{$body//per:explicacao/text()}</explicacao>
+         </estado>
+    </peritagem>
+    
     return (update:output("Sucesso. Servico válido"), db:add("servicos", $newbody, "servico.xml"))
     
-};
+    
+  };
+
+
+:)
+
+
+
+
+
 
 declare (:Apresentar as marcações associadas a um perito para o dia atual;:)
   %rest:path("/marcacao/perito")
@@ -48,7 +91,7 @@ declare (:Apresentar as marcações associadas a um perito para o dia atual;:)
   function page:getPeritagemByPerito($perito as xs:string) {
      let $dia_atual := fn:format-date(fn:current-date(),"[Y0001]-[M01]-[D01]" ) 
     
-    for $marcacao in db:open("marcacoes")//marcacao
+    for $marcacao in db:open("marcacoes")//m:marcacao
     where $marcacao/m:perito=$perito and $marcacao//m:dia = $dia_atual
     return  $marcacao
     
@@ -63,7 +106,7 @@ declare (:Apresentar as peritagens realizadas/não realizadas num determinado di
   function page:getPeritagemByParceiro($parceiro as xs:string, $dia as xs:date) {
     
     
-    for $peritagem in db:open("servicos")//peritagem
+    for $peritagem in db:open("servicos")//s:peritagem
     where $peritagem/per:parceiro=$parceiro and $peritagem//per:dia = $dia
     return  $peritagem
 };
@@ -75,7 +118,7 @@ declare (:Consultar os dados de uma peritagem.:)
   
   function page:getPeritagemById($id) {
     
-    for $peritagem in db:open("servicos")//peritagem
+    for $peritagem in db:open("servicos")//s:peritagem
     where $peritagem[@id = $id]
     return $peritagem
   };
@@ -89,17 +132,9 @@ declare
   
   function page:addmarcacao($body) {
     
-    let $createdb := page:createdb()
+    let $b := $body//m:marcacao
     
-    let $count := 1 + count(db:open("marcacoes")/marcacao) (: autoincrement ID :)
-    
-    let $newbody := (
-    <marcacao id="{$count}">
-      {$body//m:parceiro,$body//m:perito, $body//m:data, $body//m:local , $body//m:veiculo}
-    </marcacao>
-  )
-    
-    return (update:output("Sucesso. Servico válido"), db:add("marcacoes", $newbody, "marcacoes.xml"))
+    return (update:output("Sucesso. Marcação Inserida!"), insert node $b as last into db:open("marcacoes")//m:marcacoes)
     
 };
 
