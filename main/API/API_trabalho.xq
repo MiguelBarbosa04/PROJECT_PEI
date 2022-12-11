@@ -3,20 +3,6 @@ module namespace page = 'http://basex.org/examples/web-page';
 declare namespace per = 'peritagem.xsd';
 declare namespace m = 'marcacoes.xsd';
 declare namespace s = 'servicos.xsd';
-declare function page:createdb() {
-  
- (:let $dbexists := db:exists("servicos")
-   
-  return if ($dbexists) then 
-         (update:output("Base de Dados Existente!"))
-       else 
-        
-         (update:output("Sucesso. Base de Dados Criada!"), db:create(servicos))
-         
-         :)
-};
-
-
 
 
 declare
@@ -25,8 +11,7 @@ declare
   %rest:POST("{$body}")
   
   function page:addperitagem($body) {
-    
-    let $createdb := page:createdb()
+
     
     let $marcacaoId :=  db:open("marcacoes")//m:marcacao/@id/string()
     
@@ -38,7 +23,6 @@ declare
       (update:output("Sucesso. Servico válido"), insert node $body//s:peritagem as last into db:open("servicos")//s:servicos)
       else
       (update:output("Erro! Id da peritagem inválido."))
-    
       
      
   
@@ -47,40 +31,22 @@ declare
 };
 
 
-(:
-
-db:add("servicos", $body, "servico.xml")
 
 declare
   %updating
-  %rest:path("/addperitagem")
-  %rest:POST("{$body}")
-
-  function page:addperitagem($body) {
+  %rest:path("/update/peritagem")
+  %rest:PUT("{$body}")
+  %rest:query-param("id", "{$id}")
+  
+  function page:addperitagem($id as xs:string,$body) {
     
-    let $newbody := 
-    
-     <peritagem id="{$body//s:peritagem/@id}">
-         <parceiro>{$body//per:parceiro/text()}</parceiro>
-         <perito>{$body//per:perito/text()}</perito>
-         <estado type="{$body//per:estado[@id]}">
-           <ocorrencia>{$body//per:occorencia/text()}</ocorrencia>
-           <explicacao>{$body//per:explicacao/text()}</explicacao>
-         </estado>
-    </peritagem>
-    
-    return (update:output("Sucesso. Servico válido"), db:add("servicos", $newbody, "servico.xml"))
-    
-    
-  };
-
-
-:)
-
-
-
-
-
+    let $check := fn:exists(db:open("servicos")//s:peritagem[@id = $id])
+       
+    return if ($check) then 
+      (update:output("Sucesso. Documento Substituído"), replace node db:open("servicos")//s:peritagem[@id = $id] with $body//s:peritagem)
+      else
+      (update:output("Erro! Id não existe."))
+};
 
 declare (:Apresentar as marcações associadas a um perito para o dia atual;:)
   %rest:path("/marcacao/perito")

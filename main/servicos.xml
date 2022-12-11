@@ -15,7 +15,7 @@
 
         <per:estado type="Não Realizado">
             <!-- Opção de "realizado" e "não realizado" -->
-            <per:ocorrencia>Other</per:ocorrencia> <!-- Opcção inaccessible Location, missing vehicle, other  SE FOR other TEM DE TER EXPLICAÇÃO ATÉ 400 caracteres-->
+            <per:ocorrencia>other</per:ocorrencia> <!-- Opcção inaccessible Location, missing vehicle, other  SE FOR other TEM DE TER EXPLICAÇÃO ATÉ 400 caracteres-->
             <per:explicacao>Teste</per:explicacao>
         </per:estado>
 
