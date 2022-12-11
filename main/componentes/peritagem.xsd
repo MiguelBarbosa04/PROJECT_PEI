@@ -18,7 +18,7 @@
             <xs:element name="perito" type="tc:id_alfanumerico"></xs:element>
             <xs:element name="estado">
                 <xs:complexType>
-                    <xs:sequence>
+                    <xs:choice minOccurs="0" maxOccurs="2">
                         <xs:element type="xs:string" name="ocorrencia" />
                         <xs:element name="explicacao">
                             <xs:simpleType>
@@ -27,15 +27,15 @@
                                 </xs:restriction>
                             </xs:simpleType>
                         </xs:element>
-                    </xs:sequence>
+                    </xs:choice>
                     <xs:attribute type="tc:estado_peritagem" name="type"></xs:attribute>
                 </xs:complexType>
             </xs:element>
             <!-- Transformar o tipo do elemento para xs:time (valor predefinido para as horas) (HH-MM-SS) -->
-            <xs:element name="data"> 
+            <xs:element name="data">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="dia" type="xs:date"/>
+                        <xs:element name="dia" type="xs:date" />
                         <xs:element type="tc:hora" name="horaInicio" />
                         <xs:element type="tc:hora" name="horaFim" />
                     </xs:sequence>

@@ -10,7 +10,7 @@
         <xs:sequence>
             <xs:element name="parametro" maxOccurs="unbounded">
                 <xs:complexType>
-                    <xs:choice maxOccurs="unbounded">
+                    <xs:choice minOccurs="1" maxOccurs="unbounded">
                         <xs:element name="conformidade"></xs:element>
                         <xs:element name="estado_bateria" type="tc:bateria"></xs:element>
                         <xs:element name="estado_oleo" type="tc:oleo"></xs:element>
