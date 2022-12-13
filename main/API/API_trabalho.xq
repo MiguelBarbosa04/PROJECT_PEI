@@ -5,7 +5,10 @@ declare namespace m = 'marcacoes.xsd';
 declare namespace s = 'servicos.xsd';
 
 
-declare
+
+ (:A submissão de documentos correspondentes às peritagens realizadas num determinado dia. A API deverá validar o documento XML submetido e validar se o código de marcação, parceiro e  perito existem;:)
+
+declare 
   %updating
   %rest:path("/addperitagem")
   %rest:POST("{$body}")
@@ -20,18 +23,27 @@ declare
     let $some := some $body in ("API_trabalho.xq") satisfies ($validate)
        
     return if ($some) then 
-      (update:output("Sucesso. Servico válido"), insert node $body//s:peritagem as last into db:open("servicos")//s:servicos)
+      (update:output("Sucesso. Peritagem válida!"), insert node $body//s:peritagem as last into db:open("servicos")//s:servicos)
       else
-      (update:output("Erro! Id da peritagem inválido."))
+      (update:output("Erro! Id da peritagem inválida!"))
       
-     
+
+};
+
+declare
+  %updating
+  %rest:path("/addmarcacao")
+  %rest:POST("{$body}")
   
-(: Validar id peritagem com id marcação!!! :)
+  function page:addmarcacao($body) {
+    
+    let $b := $body//m:marcacao
+    
+    return (update:output("Sucesso. Marcação Inserida!"), insert node $b as last into db:open("marcacoes")//m:marcacoes)
     
 };
 
-
-
+(:A substituição de um documento correspondente às peritagens de um determinado dia;:)
 declare
   %updating
   %rest:path("/update/peritagem")
@@ -48,7 +60,8 @@ declare
       (update:output("Erro! Id não existe."))
 };
 
-declare (:Apresentar as marcações associadas a um perito para o dia atual;:)
+ (:Apresentar as marcações associadas a um perito para o dia atual;:)
+declare 
   %rest:path("/marcacao/perito")
   %rest:GET
   %rest:query-param("perito", "{$perito}")
@@ -63,7 +76,8 @@ declare (:Apresentar as marcações associadas a um perito para o dia atual;:)
     
 };
 
-declare (:Apresentar as peritagens realizadas/não realizadas num determinado dia para um dado parceiro;:)
+(:Apresentar as peritagens realizadas/não realizadas num determinado dia para um dado parceiro;:)
+declare
   %rest:path("/peritagem/parceiro")
   %rest:GET
   %rest:query-param("parceiro", "{$parceiro}")
@@ -77,8 +91,8 @@ declare (:Apresentar as peritagens realizadas/não realizadas num determinado di
     return  $peritagem
 };
   
-  
-declare (:Consultar os dados de uma peritagem.:)
+  (:Consultar os dados de uma peritagem.:)
+declare 
   %rest:path("/peritagem/{$id}")
   %rest:GET
   
@@ -91,18 +105,6 @@ declare (:Consultar os dados de uma peritagem.:)
   
 
 
-declare
-  %updating
-  %rest:path("/addmarcacao")
-  %rest:POST("{$body}")
-  
-  function page:addmarcacao($body) {
-    
-    let $b := $body//m:marcacao
-    
-    return (update:output("Sucesso. Marcação Inserida!"), insert node $b as last into db:open("marcacoes")//m:marcacoes)
-    
-};
 
   
   
