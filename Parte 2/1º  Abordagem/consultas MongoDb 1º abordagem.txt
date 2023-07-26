@@ -1,0 +1,60 @@
+- Quais os lotes adquiridos a um determinado produtor considerando um determinado ano fiscal.
+Ordene os documentos por data do lote;
+
+db.Produtores.aggregate([{$unwind:"$colheitas"},{$lookup:{from:"colheitas",localField:"colheitas",foreignField:"_id",as:"colheita"}},{$match:{"colheita.ano_fiscal":1998,"nome":"ricardo almeida"}},{$sort:{"colheita.data":1}},{$project:{"colheita":1,"_id":0}}]).pretty()
+
+
+
+
+
+- Quantos quilogramas de uma determinada qualidade de maçã foram calibrados (no total)
+considerando um determinado produtor?
+
+
+db.Produtores.aggregate([{$unwind:"$colheitas"},{$lookup:{from:"colheitas",localField:"colheitas",foreignField:"_id",as:"colheitas"}},{$match:{"colheitas.categoria":"golden","nome":"ricardo almeida"}},{$unwind:"$colheitas"},{$unwind:"$colheitas.calibres"},{$group:{_id:"$colheitas.categoria",total_maças_calibradas:{$sum:"$colheitas.calibres.quantidade"}}}]).pretty()
+
+
+
+
+
+
+- Quais os produtores que para um determinado ano fiscal, já tiveram todos os lotes devidamente
+calibrados?
+
+
+db.Produtores.aggregate([{$unwind:"$colheitas"},{$lookup:{from:"colheitas",localField:"colheitas",foreignField:"_id",as:"colheitas"}},{$unwind:"$colheitas"},{$match:{"colheitas.ano_fiscal":1998}},{$group:{_id:"$nome",quantidade_por_calibrar:{$sum:"$colheitas.quantidade_por_calibrar"}}},{$match:{"quantidade_por_calibrar":0}},{$project:{_id:1}}]).pretty()
+
+
+
+
+
+
+- Quais são os três principais produtores (com mais quilogramas fornecidos) de maçãs da qualidade:
+golden?
+
+ db.Produtores.aggregate([{$unwind:"$colheitas"},{$lookup:{from:"colheitas",localField:"colheitas",foreignField:"_id",as:"colheitas"}},{$unwind:"$colheitas"},{$match:{"colheitas.categoria":"golden"}},{$group:{_id:"$nome",quantidade_total:{$sum:"$colheitas.quantidade_total"}}},{$sort:{"quantidade_total":-1}},{$limit:3}]).pretty()
+
+
+
+
+
+
+- Qual é o fornecedor com mais percentagem de maçãs com defeito (independentemente da
+qualidade)?
+
+
+db.Produtores.aggregate([{$unwind:"$colheitas"},{$lookup:{from:"colheitas",localField:"colheitas",foreignField:"_id",as:"colheitas"}},{$unwind:"$colheitas"},{$group:{_id:"$nome",quantidade_com_defeito:{$sum:"$colheitas.quantidade_com_defeito"}}},{$sort:{"quantidade_com_defeito":-1}},{$limit:1}]).pretty()
+
+
+
+
+
+
+
+- Apresentar o valor a receber por cada lote, considerando um produtor e um ano fiscal.
+
+
+db.Produtores.aggregate([{$unwind:"$colheitas"},{$lookup:{from:"colheitas",localField:"colheitas",foreignField:"_id",as:"colheitas"}},{$unwind:"$colheitas"},{$unwind:"$colheitas.calibres"},{$group:{_id:"$colheitas.numero_lote",valor_a_pagar:{$sum:{$multiply:["$colheitas.calibres.quantidade","$colheitas.calibres.valor"]}}}}]).pretty()
+
+
+
